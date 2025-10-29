@@ -13,7 +13,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="NodeShort｜邀请好友看短剧，领取越南话费奖励" />
   <meta property="og:description" content="看短剧集金币/DP，进入群并绑定邮箱即可由机器人自动发放奖励。" />
-  <meta property="og:image" content="./assets/nodeshort-og-1200x630.png" />
+  <meta property="og:image" content="https://www.nodeshort.com/h5/assets/nodeshort-og-1200x630.png" />
   <meta property="og:url" content="https://www.nodeshort.com/h5/#/?code=9HKKIP" />
 
   <!-- Hints -->
@@ -60,13 +60,13 @@
     .btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
     .btn.ghost{background:transparent;color:var(--text);border:1px dashed var(--line)}
     /* 强化 Join CTA 可见性 */
-    .btn.cta-join{position:relative;background:linear-gradient(135deg,var(--brand),var(--accent));color:var(--btn-fg);padding:12px 18px;font-size:15px;box-shadow:0 8px 24px rgba(233,167,0,.35);}
+    .btn.cta-join{position:relative;background:linear-gradient(135deg,var(--brand),var(--accent));color:var(--btn-fg);padding:12px 18px;font-size:15px;box-shadow:0 8px 24px rgba(233,167,0,.35)}
     @keyframes glow{0%{box-shadow:0 0 0 rgba(233,167,0,0)}50%{box-shadow:0 0 24px rgba(233,167,0,.45)}100%{box-shadow:0 0 0 rgba(233,167,0,0)}}
     .btn.cta-join{animation:glow 2.8s infinite}
     .btn.cta-join:hover{transform:translateY(-1px)}
     .theme-toggle{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);border-radius:10px;padding:8px 10px;color:var(--muted);cursor:pointer}
     header.shrink .brand img{height:56px}
-    @media(max-width:740px){.brand img{height:70px}.actions{flex-wrap:wrap;justify-content:center}.btn{padding:8px 12px;font-size:13px}.theme-toggle{padding:6px 8px;font-size:13px}}
+    @media(max-width:740px){.brand img{height:70px}.actions{gap:8px;flex-wrap:wrap;justify-content:center}.btn{padding:8px 12px;font-size:13px}.theme-toggle{padding:6px 8px;font-size:13px}}
 
     /* Alert bar */
     .alert{background:var(--alert);border-bottom:1px solid var(--alertbd);color:#d8f0a3}
@@ -98,10 +98,6 @@
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
 
-    .kv{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
-    .kv img{width:100%;height:100%;object-fit:cover}
-    .badge-auto{position:absolute;right:12px;top:12px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-weight:800}
-
     .list{display:grid;gap:10px;margin:0;padding:0}
     .list li{list-style:none;display:flex;gap:10px;align-items:flex-start}
     .idx{background:color-mix(in oklch, var(--line) 60%, var(--bg));border-radius:8px;min-width:28px;text-align:center;color:var(--muted)}
@@ -110,6 +106,7 @@
     .footer-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
     .footer-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:260px;box-shadow:var(--shadow);cursor:pointer;transition:.2s transform}
     .footer-card:hover{transform:translateY(-2px)}
+
     /* Mobile-first typography & CTA emphasis */
     html,body{font-size:16px}
     .hero h1{font-size:clamp(28px,6vw,44px);font-weight:900;color:#ffe066;text-shadow:0 0 6px rgba(255,224,102,.35)}
@@ -120,6 +117,7 @@
     .btn.cta-join{font-size:16px;padding:14px 18px}
     .stat b{font-size:22px}
     @media(max-width:740px){.container{padding:0 12px}.actions{gap:8px}.cta-row{gap:8px}.stat{min-width:auto;flex:1}}
+
     /* Sticky bottom CTA (mobile-first) */
     .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);transition:transform .25s ease, opacity .25s ease;opacity:.98}
     .sticky-cta.visible{transform:translateY(0)}
@@ -130,6 +128,17 @@
 
     /* Numeric highlight */
     .num{color:#ffe066;text-shadow:0 0 6px rgba(255,224,102,.35)}
+
+    /* In-App 浏览器兜底弹窗 */
+    .inapp-mask{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100}
+    .inapp-mask.show{display:flex}
+    .inapp-dialog{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px;max-width:520px;margin:0 16px}
+    .inapp-dialog h3{margin:0 0 8px;font-size:18px;font-weight:900;color:#ffe066}
+    .inapp-dialog p{margin:8px 0;color:var(--muted)}
+    .inapp-actions{display:flex;gap:8px;margin-top:12px}
+    .copy-field{display:flex;gap:6px;align-items:center}
+    .copy-field input{flex:1;background:transparent;border:1px dashed var(--line);color:var(--text);padding:8px;border-radius:8px}
+    .copy-field button{white-space:nowrap}
   </style>
 
   <!-- JSON-LD（中文） -->
@@ -173,12 +182,12 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <img src="./assets/nodeshort-logo.png" alt="NodeShort 标志" loading="lazy" decoding="async">
+        <img src="./assets/nodeshort-logo.png" width="288" height="82" fetchpriority="high" alt="NodeShort 标志" loading="lazy" decoding="async">
       </div>
       <div class="actions">
         <button id="themeToggle" class="theme-toggle" aria-label="切换主题"><span>🌙</span><span>主题</span></button>
-        <a id="btnJoinTGTop" class="btn primary cta-join" role="button" aria-label="进入 Telegram 群领取奖励"><span>✈️</span><span>进群领取</span></a>
-        <a id="btnCSTop" class="btn secondary" role="button" aria-label="联系官方客服"><span>💬</span><span>联系客服</span></a>
+        <button id="btnJoinTGTop" class="btn primary cta-join" type="button" aria-label="进入 Telegram 群领取奖励"><span>✈️</span><span>进群领取</span></button>
+        <button id="btnCSTop" class="btn secondary" type="button" aria-label="联系官方客服"><span>💬</span><span>联系客服</span></button>
       </div>
     </div>
   </header>
@@ -187,15 +196,13 @@
     <!-- Hero 关键视觉区 -->
     <section class="hero">
       <div class="container" style="margin-top:16px">
-        <span class="tag">最新活动</span>
+        <span class="tag">🔥 最新活动</span>
         <h1>看短剧还能赚钱？<b>真的！</b></h1>
         <p class="lead">越南用户正在用 NodeShort 一边追剧一边领取<b>越南话费奖励</b>。<br>想拿奖励？请按<b>注册 → 进群（Telegram） → 绑定邮箱</b>完成流程，机器人将自动发放。</p>
 
         <div class="cta-row" style="margin-top:12px">
-          <a id="btnJoinTGHero" class="btn primary cta-join" role="button">进入 Telegram 领取奖励</a>
+          <button id="btnJoinTGHero" class="btn primary cta-join" type="button">进入 Telegram 领取奖励</button>
         </div>
-
-        
 
         <div class="stats">
           <div class="stat"><b><span class="num">1K</span> 金币</b><div class="muted">= <span class="num">1K</span> VND</div></div>
@@ -208,12 +215,12 @@
           <div class="proof-pill">✅ 反作弊监测，公平发放</div>
         </div>
 
-        <!-- 手机UI 轮播（下移到此） -->
+        <!-- 手机UI 轮播 -->
         <div class="carousel" id="uiCarousel" aria-label="应用界面预览轮播" style="margin-top:16px">
           <div class="slides">
-            <img src="./assets/nodeshort-app-home-768.png" alt="应用首页界面" loading="lazy" decoding="async">
-            <img src="./assets/nodeshort-app-player-768.png" alt="播放器界面" loading="lazy" decoding="async">
-            <img src="./assets/nodeshort-app-toplist-768.png" alt="排行榜界面" loading="lazy" decoding="async">
+            <img src="./assets/nodeshort-app-home-768.png" width="768" height="1365" loading="lazy" decoding="async" fetchpriority="high" alt="应用首页界面">
+            <img src="./assets/nodeshort-app-player-768.png" width="768" height="1365" loading="lazy" decoding="async" alt="播放器界面">
+            <img src="./assets/nodeshort-app-toplist-768.png" width="768" height="1365" loading="lazy" decoding="async" alt="排行榜界面">
           </div>
           <div class="dots" aria-label="轮播分页">
             <span class="dot active" role="button" tabindex="0" aria-label="第 1 张"></span>
@@ -232,7 +239,7 @@
           <div class="card" style="padding:16px">
             <h3>1️⃣ ✈️ 进入 Telegram 群</h3>
             <p class="muted">必须进群，机器人才能完成验证并发放奖励。</p>
-            <a id="btnJoinTGFlow" class="btn primary cta-join">进群领取</a>
+            <button id="btnJoinTGFlow" class="btn primary cta-join" type="button">进群领取</button>
           </div>
           <div class="card" style="padding:16px">
             <h3>2️⃣ 🧑‍💻 注册账号</h3>
@@ -241,7 +248,7 @@
           <div class="card" style="padding:16px">
             <h3>3️⃣ ✉️ 绑定邮箱</h3>
             <p class="muted">绑定后更安全稳定，避免奖励丢失。</p>
-            <a id="btnBindEmail" class="btn ghost" target="_blank" rel="noopener">✉️ 绑定邮箱</a>
+            <button id="btnBindEmail" class="btn ghost" type="button" target="_blank" rel="noopener">✉️ 绑定邮箱</button>
           </div>
         </div>
 
@@ -271,42 +278,57 @@
 
   <footer>
     <div class="container" style="text-align:center">
-      
-      <a id="btnJoinTGFooter" class="btn primary cta-join">进入 Telegram 群领取</a>
-
+      <button id="btnJoinTGFooter" class="btn primary cta-join" type="button">进入 Telegram 群领取</button>
       <div style="height:10px"></div>
-      <a id="btnCSFooter" class="btn secondary" role="button">联系官方客服 @NodeShort001</a>
+      <button id="btnCSFooter" class="btn secondary" type="button" role="button">联系官方客服 @NodeShort001</button>
 
       <div class="footer-links" style="margin-top:20px">
         <div class="footer-card"><h3>官方客服：@NodeShort001</h3></div>
       </div>
 
       <div class="brand" style="margin-top:20px;display:flex;justify-content:center">
-        <img src="./assets/nodeshort-logo.png" alt="NodeShort 标志" loading="lazy" decoding="async">
+        <img src="./assets/nodeshort-logo.png" width="288" height="82" fetchpriority="high" alt="NodeShort 标志" loading="lazy" decoding="async">
       </div>
       <div class="muted" style="text-align:center">© 2025 Node Short Studios Pte. Ltd. 保留所有权利。</div>
     </div>
   </footer>
+
+  <!-- In-App 浏览器兜底弹窗 -->
+  <div class="inapp-mask" id="inappMask" role="dialog" aria-modal="true" aria-labelledby="inappTitle" aria-hidden="true">
+    <div class="inapp-dialog">
+      <h3 id="inappTitle">在当前浏览器无法直接打开 Telegram</h3>
+      <p>请复制下方链接并在系统浏览器中打开，或直接在 Telegram 搜索 <b>@NodeShortVN</b>。</p>
+      <div class="copy-field">
+        <input id="copyUrl" value="https://t.me/NodeShortVN" readonly>
+        <button id="btnCopy" class="btn secondary" type="button">复制链接</button>
+      </div>
+      <div class="inapp-actions">
+        <button id="btnOpenStore" class="btn ghost" type="button">打开系统浏览器</button>
+        <button id="btnInappClose" class="btn primary" type="button">我已了解</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Sticky Bottom CTA -->
   <div class="sticky-cta" id="stickyCta" aria-live="polite">
     <div class="wrap container">
       <div class="title">🎁 进入 Telegram 领取奖励 · <span class="num">名额有限</span></div>
       <div style="display:flex;gap:8px">
-        <a id="btnJoinTGSticky" class="btn primary cta-join" role="button">进群领取</a>
-        <a id="btnCSSticky" class="btn secondary" role="button">联系客服</a>
+        <button id="btnJoinTGSticky" class="btn primary cta-join" type="button">进群领取</button>
+        <button id="btnCSSticky" class="btn secondary" type="button">联系客服</button>
       </div>
     </div>
   </div>
 
   <script defer>
+    'use strict';
     // ========= 工具 =========
     const root=document.documentElement;
     const STORAGE_THEME='ns_theme';
     const STORAGE_JOINED='joined_tg';
     const hasFbq=()=>typeof window.fbq==='function';
     const hasGtag=()=>typeof window.gtag==='function';
-    const track=(name,params={})=>{ // 事件名保留英文，便于与既有看板对齐
+    const track=(name,params={})=>{
       try{ if(hasFbq()) fbq('trackCustom',name,params);}catch(e){}
       try{ if(hasGtag()) gtag('event',name,params);}catch(e){}
     };
@@ -317,12 +339,23 @@
         u.searchParams.set('utm_campaign',campaign);
         if(content) u.searchParams.set('utm_content',content);
         return u.toString();
-      }catch{return url;}
+      }catch(_err){return url;}
     };
     const openNew=(url)=>window.open(url,'_blank','noopener');
+    const DEVICE=/Mobi|Android|iPhone/i.test(navigator.userAgent)?'mobile':'desktop';
+    const isInApp=/MicroMessenger|FBAN|FBAV|Line|MiuiBrowser|VivoBrowser|OPPO|QQBrowser/i.test(navigator.userAgent);
+
+    // In-App 弹窗工具
+    const $=sel=>document.querySelector(sel);
+    const showInApp=()=>{ const m=$('#inappMask'); if(m){ m.classList.add('show'); m.setAttribute('aria-hidden','false'); } };
+    const hideInApp=()=>{ const m=$('#inappMask'); if(m){ m.classList.remove('show'); m.setAttribute('aria-hidden','true'); } };
+    const bindInAppModal=()=>{
+      $('#btnInappClose')?.addEventListener('click',hideInApp);
+      $('#btnCopy')?.addEventListener('click',()=>{ try{ navigator.clipboard.writeText($('#copyUrl').value); track('InApp_Copy_Success',{device:DEVICE}); }catch(_e){ track('InApp_Copy_Fail',{device:DEVICE}); } });
+      $('#btnOpenStore')?.addEventListener('click',()=>{ openNew('https://t.me/NodeShortVN'); track('InApp_Open_SystemBrowser',{device:DEVICE}); });
+    };
 
     // ========= 配置 =========
-    const APP_URL='https://www.nodeshort.com/h5/#/?code=9HKKIP';
     const TG_WEB='https://t.me/NodeShortVN';
     const TG_DEEP='tg://resolve?domain=NodeShortVN';
     const CS_WEB='https://t.me/NodeShort001';
@@ -333,23 +366,30 @@
     const TODAY_COUNT=12489; // 顶部 Banner 展示用，可接后端
 
     // 昨日人数
-    document.getElementById('yesterdayCount').textContent=YESTERDAY_COUNT.toLocaleString('zh-CN');
+    (function(){
+      const n=document.getElementById('yesterdayCount');
+      if(n){ n.textContent=YESTERDAY_COUNT.toLocaleString('zh-CN'); }
+    })();
 
     // 主题
-    const setTheme=t=>{root.setAttribute('data-theme',t);try{localStorage.setItem(STORAGE_THEME,t)}catch(e){}};
-    setTheme((()=>{try{return localStorage.getItem(STORAGE_THEME)||'dark'}catch(e){return'dark'}})());
+    const setTheme=t=>{root.setAttribute('data-theme',t);try{localStorage.setItem(STORAGE_THEME,t)}catch(_e){}};
+    setTheme((()=>{try{return localStorage.getItem(STORAGE_THEME)||'dark'}catch(_e){return'dark'}})());
     document.getElementById('themeToggle')?.addEventListener('click',()=>{
       setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
       track('Theme_Toggle',{theme:root.getAttribute('data-theme')});
     });
 
     // 顶部提示条曝光
-    (function(){const el=document.getElementById('limitBanner');
+    (function(){
+      const el=document.getElementById('limitBanner');
       if('IntersectionObserver'in window && el){
         const io=new IntersectionObserver(es=>es.forEach(e=>{
-          if(e.isIntersecting){track('Banner_View',{variant:'limit_300'});io.unobserve(el);} 
-        }),{threshold:.6}); io.observe(el);
-      } else { track('Banner_View',{fallback:true}); }
+          if(e.isIntersecting){ track('Banner_View',{variant:'limit_300'}); io.unobserve(el); }
+        }),{threshold:.6});
+        io.observe(el);
+      } else {
+        track('Banner_View',{fallback:true});
+      }
     })();
 
     // 顶部动态 Banner 轮播（4s）
@@ -371,11 +411,17 @@
       if(!prefersReduce){ setInterval(rotate,4000); }
     })();
 
-    // 手机UI轮播
+    // 手机UI轮播（支持 URL 参数覆盖 img1/2/3）
     (function(){
+      const params=new URLSearchParams(location.search);
+      const override=[params.get('img1'),params.get('img2'),params.get('img3')].filter(Boolean);
+
       const carousel=document.getElementById('uiCarousel');
       if(!carousel) return;
       const slides=carousel.querySelector('.slides');
+      const imgs=[...slides.querySelectorAll('img')];
+      if(override.length){ imgs.forEach((img,i)=>{ if(override[i]) img.src=override[i]; }); }
+
       const dots=[...carousel.querySelectorAll('.dot')];
       let idx=0; let timer=null;
       const go=(i)=>{
@@ -395,69 +441,84 @@
       // 滑动手势（移动端）
       let startX=null;
       carousel.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;},{passive:true});
-      carousel.addEventListener('touchmove',e=>{if(startX===null)return; const dx=e.touches[0].clientX-startX; if(Math.abs(dx)>40){ go(idx+(dx<0?1:-1)); startX=null; autoplay(); }},{passive:true});
+      carousel.addEventListener('touchmove',e=>{
+        if(startX===null) return;
+        const dx=e.touches[0].clientX-startX;
+        if(Math.abs(dx)>40){ go(idx+(dx<0?1:-1)); startX=null; autoplay(); }
+      },{passive:true});
       autoplay();
+      // 用户手动交互后暂停自动轮播 5s
+      const pause=()=>{ clearInterval(timer); setTimeout(()=>autoplay(),5000); };
+      carousel.addEventListener('touchend',pause);
+      dots.forEach(d=>d.addEventListener('click',pause));
     })();
 
     // ========= 行为 =========
     const withUTM=(url,content)=>addUtm(url,'landing','button',CAMPAIGN,content);
-
-    
-    const goBindEmail=(pos)=>{ track('CTA_BindEmail',{pos}); openNew(withUTM(EMAIL_BIND_URL,'bind_'+pos)); };
+    const goBindEmail=(pos)=>{ track('CTA_BindEmail',{pos,device:DEVICE}); openNew(withUTM(EMAIL_BIND_URL,'bind_'+pos)); };
 
     // 深链唤醒 TG（失败回落）
     const goJoinTG=(pos)=>{
-      track('CTA_JoinTG_Click',{pos});
+      const ctx={pos, device: DEVICE};
+      track('CTA_JoinTG_Click',ctx);
+      if(isInApp){ showInApp(); track('CTA_JoinTG_InApp_Block',ctx); return; }
       const t0=Date.now();
       setTimeout(()=>{ openNew(withUTM(TG_WEB,'tg_web_'+pos)); },800); // 回落
-      try{ window.location.href = TG_DEEP; }catch(e){}
-      try{ localStorage.setItem(STORAGE_JOINED,'1'); }catch(e){}
-      setTimeout(()=>{ track('CTA_JoinTG_Result',{pos,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
+      try{ window.location.href = TG_DEEP; }catch(_e){}
+      try{ localStorage.setItem(STORAGE_JOINED,'1'); }catch(_e){}
+      setTimeout(()=>{ track('CTA_JoinTG_Result',{...ctx,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
     };
 
     // 联系客服（深链优先，回落 H5）
     const goCS=(pos)=>{
-      track('CS_Click',{pos});
+      const ctx={pos, device: DEVICE};
+      track('CS_Click',ctx);
+      if(isInApp){ showInApp(); track('CS_InApp_Block',ctx); return; }
       const t0=Date.now();
       setTimeout(()=>{ openNew(withUTM(CS_WEB,'cs_web_'+pos)); },800);
-      try{ window.location.href = CS_DEEP; }catch(e){}
-      setTimeout(()=>{ track('CS_Result',{pos,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
+      try{ window.location.href = CS_DEEP; }catch(_e){}
+      setTimeout(()=>{ track('CS_Result',{...ctx,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
     };
 
     // 奖励门禁：未进群强提醒
     const guardReward=()=>{
-      const joined = (()=>{ try{ return localStorage.getItem(STORAGE_JOINED)==='1'; }catch(e){ return false; } })();
+      const joined = (()=>{ try{ return localStorage.getItem(STORAGE_JOINED)==='1'; }catch(_e){ return false; } })();
       if(!joined){
-        track('Reward_Gate',{joined:false});
+        track('Reward_Gate',{joined:false,device:DEVICE});
         alert('请先进入 Telegram 群，再领取奖励。完成进群并绑定邮箱后，机器人会自动发放。');
         return false;
       }
-      track('Reward_Gate',{joined:true});
+      track('Reward_Gate',{joined:true,device:DEVICE});
       return true;
     };
 
     // 绑定
-    const bind=(id,fn)=>document.getElementById(id)?.addEventListener('click',fn);
-        bind('btnJoinTGTop', ()=>goJoinTG('top'));
-        bind('btnCSTop', ()=>goCS('top'));
-        bind('btnJoinTGHero', ()=>goJoinTG('hero'));
-        bind('btnJoinTGFlow', ()=>goJoinTG('flow'));
-    bind('btnBindEmail', ()=>{ if(guardReward()) goBindEmail('flow'); });
-        bind('btnJoinTGFooter', ()=>goJoinTG('footer'));
-        bind('btnCSFooter', ()=>goCS('footer'));
-        bind('btnJoinTGSticky', ()=>goJoinTG('sticky'));
-        bind('btnCSSticky', ()=>goCS('sticky'));
+    const bind=(id,fn)=>{ const el=document.getElementById(id); if(el) el.addEventListener('click',fn); };
+    bind('btnJoinTGTop',   ()=>goJoinTG('top'));
+    bind('btnCSTop',       ()=>goCS('top'));
+    bind('btnJoinTGHero',  ()=>goJoinTG('hero'));
+    bind('btnJoinTGFlow',  ()=>goJoinTG('flow'));
+    bind('btnBindEmail',   ()=>{ if(guardReward()) goBindEmail('flow'); });
+    bind('btnJoinTGFooter',()=>goJoinTG('footer'));
+    bind('btnCSFooter',    ()=>goCS('footer'));
+    bind('btnJoinTGSticky',()=>goJoinTG('sticky'));
+    bind('btnCSSticky',    ()=>goCS('sticky'));
 
     // 流程曝光
-    ['flow'].forEach(sec=>{
-      const el=document.getElementById(sec);
-      if(!el) return;
+    (function(){
+      const section=document.getElementById('flow');
+      if(!section) return;
       if('IntersectionObserver' in window){
-        const io=new IntersectionObserver(es=>es.forEach(e=>{
-          if(e.isIntersecting){track('Flow_Step_View',{section:sec}); io.unobserve(el);} 
-        }),{threshold:.5}); io.observe(el);
-      } else { track('Flow_Step_View',{section:sec, fallback:true}); }
-    });
+        const io=new IntersectionObserver(entries=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting){ track('Flow_Step_View',{section:'flow'}); io.unobserve(section); }
+          });
+        },{threshold:.5});
+        io.observe(section);
+      } else {
+        track('Flow_Step_View',{section:'flow', fallback:true});
+      }
+    })();
 
     // Sticky CTA 显示/隐藏（上滑显示、下滑隐藏）
     (function(){
@@ -469,9 +530,19 @@
         ticking=false;
       };
       window.addEventListener('scroll',()=>{ if(!ticking){ window.requestAnimationFrame(onScroll); ticking=true; } },{passive:true});
-      // 初始显示一次
       setTimeout(()=>bar.classList.add('visible'),600);
-    }})();
+    })();
+
+    // 绑定 In-App 弹窗事件
+    bindInAppModal();
+
+    // ========== 自检（轻量测试） ==========
+    (function(){
+      console.assert(typeof fbq === 'function' || true, 'fbq 可用性（允许未加载）');
+      console.assert(document.getElementById('btnJoinTGHero'), 'Hero CTA 存在');
+      console.assert(document.getElementById('uiCarousel'), 'UI 轮播存在');
+      console.assert(document.getElementById('stickyCta'), 'Sticky CTA 存在');
+    })();
   </script>
 </body>
 </html>
