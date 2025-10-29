@@ -59,6 +59,11 @@
     .btn.primary{background:linear-gradient(135deg,var(--brand),var(--accent));color:var(--btn-fg)}
     .btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
     .btn.ghost{background:transparent;color:var(--text);border:1px dashed var(--line)}
+    /* 强化 Join CTA 可见性 */
+    .btn.cta-join{position:relative;background:linear-gradient(135deg,var(--brand),var(--accent));color:var(--btn-fg);padding:12px 18px;font-size:15px;box-shadow:0 8px 24px rgba(233,167,0,.35);}
+    @keyframes glow{0%{box-shadow:0 0 0 rgba(233,167,0,0)}50%{box-shadow:0 0 24px rgba(233,167,0,.45)}100%{box-shadow:0 0 0 rgba(233,167,0,0)}}
+    .btn.cta-join{animation:glow 2.8s infinite}
+    .btn.cta-join:hover{transform:translateY(-1px)}
     .theme-toggle{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);border-radius:10px;padding:8px 10px;color:var(--muted);cursor:pointer}
     header.shrink .brand img{height:56px}
     @media(max-width:740px){.brand img{height:70px}.actions{flex-wrap:wrap;justify-content:center}.btn{padding:8px 12px;font-size:13px}.theme-toggle{padding:6px 8px;font-size:13px}}
@@ -68,22 +73,25 @@
     .alert .container{display:flex;gap:10px;align-items:center;justify-content:center;padding:8px 12px;font-weight:700}
     .alert b{color:#f7ffbf}
 
+    /* Top Ticker */
+    .ticker{background:linear-gradient(90deg, rgba(233,167,0,.18), rgba(233,167,0,.08));border-bottom:1px solid var(--alertbd);color:#ffe8a3}
+    .ticker .container{display:flex;gap:10px;align-items:center;justify-content:center;padding:6px 10px;font-weight:800}
+    .ticker .blink{animation:blink 1.2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.55}}
+    .ticker .swap{transition:opacity .4s ease}
+    .ticker .swap.hide{opacity:0}
+
     /* Hero */
-    .hero{padding:36px 0 24px;background:radial-gradient(60% 70% at 70% 0%, color-mix(in oklch, var(--brand) 28%, transparent), transparent 65%)}
-    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}
-    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
-    .tag{display:inline-flex;align-items:center;gap:8px;color:#111;background:var(--brand);padding:6px 10px;border-radius:999px;font-weight:800;font-size:.9rem}
-    .hero h1{margin:12px 0 10px;font-size:clamp(26px,4.2vw,42px)}
-    .lead{color:var(--muted);font-size:clamp(14px,1.8vw,17px)}
-
-    .cta-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px}
-    @media (max-width:520px){.cta-row{grid-template-columns:1fr}}
-
-    .stats{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
-    .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-width:160px;box-shadow:var(--shadow)}
-    .stat b{font-size:20px;color:var(--gold)}
-    .social-proof{display:flex;gap:8px;align-items:center;margin-top:8px}
     .proof-pill{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:13px}
+
+    /* Carousel（手机UI） */
+    .carousel{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);width:100%;max-width:420px;margin:14px auto}
+    .carousel .slides{display:flex;transition:transform .5s ease}
+    .carousel .slides img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
+    .carousel .dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:8px}
+    .carousel .dot{width:8px;height:8px;border-radius:50%;background:color-mix(in oklch, var(--muted) 60%, transparent)}
+    .carousel .dot.active{background:var(--brand)}
+    @media (min-width:0){#uiCarousel{aspect-ratio:9/16;max-height:80vh;}#uiCarousel .slides{height:100%}}
 
     .section{padding:24px 0}
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
@@ -102,6 +110,26 @@
     .footer-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
     .footer-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:260px;box-shadow:var(--shadow);cursor:pointer;transition:.2s transform}
     .footer-card:hover{transform:translateY(-2px)}
+    /* Mobile-first typography & CTA emphasis */
+    html,body{font-size:16px}
+    .hero h1{font-size:clamp(28px,6vw,44px);font-weight:900;color:#ffe066;text-shadow:0 0 6px rgba(255,224,102,.35)}
+    .lead{color:#e9ebf0;font-size:clamp(15px,3.8vw,19px);font-weight:600;line-height:1.65}
+    .section h2{font-size:clamp(20px,5vw,28px);font-weight:900;color:#ffe066;display:flex;align-items:center;gap:6px}
+    .cta-row .btn{width:100%;justify-content:center}
+    .btn{min-height:44px}
+    .btn.cta-join{font-size:16px;padding:14px 18px}
+    .stat b{font-size:22px}
+    @media(max-width:740px){.container{padding:0 12px}.actions{gap:8px}.cta-row{gap:8px}.stat{min-width:auto;flex:1}}
+    /* Sticky bottom CTA (mobile-first) */
+    .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);transition:transform .25s ease, opacity .25s ease;opacity:.98}
+    .sticky-cta.visible{transform:translateY(0)}
+    .sticky-cta .wrap{backdrop-filter:blur(10px);background:rgba(19,19,22,.88);border-top:1px solid var(--line);padding:10px calc(12px + env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-right));display:grid;grid-template-columns:1fr auto;gap:8px}
+    @media(min-width:741px){.sticky-cta .wrap{grid-template-columns:1fr auto;max-width:1120px;margin-inline:auto;padding-inline:16px}}
+    .sticky-cta .title{font-weight:800;font-size:14px;color:#ffe066;display:flex;align-items:center;gap:6px}
+    .sticky-cta .btn{min-height:44px}
+
+    /* Numeric highlight */
+    .num{color:#ffe066;text-shadow:0 0 6px rgba(255,224,102,.35)}
   </style>
 
   <!-- JSON-LD（中文） -->
@@ -130,9 +158,16 @@
   </script>
 </head>
 <body>
+  <!-- 顶部动态 Banner（轻量） -->
+  <div class="ticker" id="topTicker" role="status" aria-live="polite">
+    <div class="container">
+      <span class="blink">🎁</span>
+      <span class="swap" id="tickerText">已领取用户：12,489 人 · 剩余名额有限</span>
+    </div>
+  </div>
   <!-- 限量提示条 -->
   <div class="alert" id="limitBanner" role="note" aria-live="polite">
-    <div class="container">🎁 <b>每天仅限 300 名新用户可领取奖励</b> — 先到先得</div>
+    <div class="container">🎁 <b>每天仅限 前<span class="num">300</span> 名用户可领取奖励</b> — 先到先得</div>
   </div>
 
   <header>
@@ -142,7 +177,8 @@
       </div>
       <div class="actions">
         <button id="themeToggle" class="theme-toggle" aria-label="切换主题"><span>🌙</span><span>主题</span></button>
-        <a id="btnJoinTGTop" class="btn secondary" role="button" aria-label="进入 Telegram 群领取奖励"><span>✈️</span><span>进群领取</span></span></a>
+        <a id="btnJoinTGTop" class="btn primary cta-join" role="button" aria-label="进入 Telegram 群领取奖励"><span>✈️</span><span>进群领取</span></a>
+        <a id="btnCSTop" class="btn secondary" role="button" aria-label="联系官方客服"><span>💬</span><span>联系客服</span></a>
       </div>
     </div>
   </header>
@@ -150,38 +186,40 @@
   <main>
     <!-- Hero 关键视觉区 -->
     <section class="hero">
-      <div class="container hero-grid">
-        <!-- 左：女孩追剧金币飞出（替换为你的KV图） -->
-        <div class="kv" aria-label="看短剧，金币飞出，领取奖励">
-          <img src="./assets/kv-girl-coins-960.png" alt="女孩追剧，金币飞出" loading="lazy" decoding="async">
-        </div>
-
-        <!-- 右：TG群截图 + 机器人自动发放奖励 -->
-        <div class="kv" aria-label="Telegram 群组 - 机器人自动发奖">
-          <img src="./assets/tg-group-screenshot.png" alt="官方 Telegram 群截图" loading="lazy" decoding="async">
-          <div class="badge-auto">🤖 奖励由机器人自动发放</div>
-        </div>
-      </div>
-
       <div class="container" style="margin-top:16px">
         <span class="tag">最新活动</span>
         <h1>看短剧还能赚钱？<b>真的！</b></h1>
-        <p class="lead">越南用户正在用 NodeShort 一边追剧一边领取<b>越南话费奖励</b>。<br>想拿奖励？请按<b>注册 → 进群（Telegram） → 绑定邮箱</b>完成流程，机器人将自动发放。</p></p>
+        <p class="lead">越南用户正在用 NodeShort 一边追剧一边领取<b>越南话费奖励</b>。<br>想拿奖励？请按<b>注册 → 进群（Telegram） → 绑定邮箱</b>完成流程，机器人将自动发放。</p>
 
         <div class="cta-row" style="margin-top:12px">
-          <a id="btnRegisterHero" class="btn primary" target="_blank" rel="noopener">立即注册</a>
-          <a id="btnJoinTGHero" class="btn secondary" role="button">进入 Telegram 领取奖励</a>
+          <a id="btnJoinTGHero" class="btn primary cta-join" role="button">进入 Telegram 领取奖励</a>
         </div>
 
+        
+
         <div class="stats">
-          <div class="stat"><b>1K 金币</b><div class="muted">= 1K VND</div></div>
-          <div class="stat"><b>10K+</b><div class="muted">不限上限</div></div>
+          <div class="stat"><b><span class="num">1K</span> 金币</b><div class="muted">= <span class="num">1K</span> VND</div></div>
+          <div class="stat"><b><span class="num">10K+</span></b><div class="muted">不限上限</div></div>
           <div class="stat"><b>21/10 – 31/10/2025</b><div class="muted">活动期间（越南）</div></div>
         </div>
 
         <div class="social-proof">
-          <div class="proof-pill">📈 昨日领取人数：<b id="yesterdayCount">8,532</b> 人</div>
+          <div class="proof-pill">📈 昨日领取人数：<b id="yesterdayCount" class="num">8,532</b> 人</div>
           <div class="proof-pill">✅ 反作弊监测，公平发放</div>
+        </div>
+
+        <!-- 手机UI 轮播（下移到此） -->
+        <div class="carousel" id="uiCarousel" aria-label="应用界面预览轮播" style="margin-top:16px">
+          <div class="slides">
+            <img src="./assets/nodeshort-app-home-768.png" alt="应用首页界面" loading="lazy" decoding="async">
+            <img src="./assets/nodeshort-app-player-768.png" alt="播放器界面" loading="lazy" decoding="async">
+            <img src="./assets/nodeshort-app-toplist-768.png" alt="排行榜界面" loading="lazy" decoding="async">
+          </div>
+          <div class="dots" aria-label="轮播分页">
+            <span class="dot active" role="button" tabindex="0" aria-label="第 1 张"></span>
+            <span class="dot" role="button" tabindex="0" aria-label="第 2 张"></span>
+            <span class="dot" role="button" tabindex="0" aria-label="第 3 张"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -189,22 +227,21 @@
     <!-- 三步强制流程 -->
     <section class="section" id="flow">
       <div class="container">
-        <h2>如何领取奖励？</h2>
+        <h2>🚀 如何领取奖励？</h2>
         <div class="grid-3">
           <div class="card" style="padding:16px">
-            <h3>1️⃣ 注册账号</h3>
-            <p class="muted">创建 NodeShort 账号，开始观看短剧自动累计金币/DP。</p>
-            <a id="btnRegisterFlow" class="btn ghost" target="_blank" rel="noopener">立即注册</a>
-          </div>
-          <div class="card" style="padding:16px">
-            <h3>2️⃣ 进入 Telegram 群</h3>
+            <h3>1️⃣ ✈️ 进入 Telegram 群</h3>
             <p class="muted">必须进群，机器人才能完成验证并发放奖励。</p>
-            <a id="btnJoinTGFlow" class="btn ghost">进群领取</a>
+            <a id="btnJoinTGFlow" class="btn primary cta-join">进群领取</a>
           </div>
           <div class="card" style="padding:16px">
-            <h3>3️⃣ 绑定邮箱</h3>
+            <h3>2️⃣ 🧑‍💻 注册账号</h3>
+            <p class="muted">创建 NodeShort 账号，开始观看短剧自动累计金币/DP。</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <h3>3️⃣ ✉️ 绑定邮箱</h3>
             <p class="muted">绑定后更安全稳定，避免奖励丢失。</p>
-            <a id="btnBindEmail" class="btn ghost" target="_blank" rel="noopener">绑定邮箱</a>
+            <a id="btnBindEmail" class="btn ghost" target="_blank" rel="noopener">✉️ 绑定邮箱</a>
           </div>
         </div>
 
@@ -218,7 +255,7 @@
     <!-- 规则 -->
     <section class="section" id="rules">
       <div class="container">
-        <h2>活动规则</h2>
+        <h2>📌 活动规则</h2>
         <ul class="list">
           <li><span class="idx">1</span><span>对象：NodeShort 全体成员（越南市场）。</span></li>
           <li><span class="idx">2</span><span>时间：21/10/2025 – 31/10/2025。</span></li>
@@ -234,9 +271,11 @@
 
   <footer>
     <div class="container" style="text-align:center">
-      <a id="btnRegisterFooter" class="btn primary" target="_blank" rel="noopener">我已了解，去注册</a>
+      
+      <a id="btnJoinTGFooter" class="btn primary cta-join">进入 Telegram 群领取</a>
+
       <div style="height:10px"></div>
-      <a id="btnJoinTGFooter" class="btn secondary">进入 Telegram 群领取</a>
+      <a id="btnCSFooter" class="btn secondary" role="button">联系官方客服 @NodeShort001</a>
 
       <div class="footer-links" style="margin-top:20px">
         <div class="footer-card"><h3>官方客服：@NodeShort001</h3></div>
@@ -248,6 +287,17 @@
       <div class="muted" style="text-align:center">© 2025 Node Short Studios Pte. Ltd. 保留所有权利。</div>
     </div>
   </footer>
+
+  <!-- Sticky Bottom CTA -->
+  <div class="sticky-cta" id="stickyCta" aria-live="polite">
+    <div class="wrap container">
+      <div class="title">🎁 进入 Telegram 领取奖励 · <span class="num">名额有限</span></div>
+      <div style="display:flex;gap:8px">
+        <a id="btnJoinTGSticky" class="btn primary cta-join" role="button">进群领取</a>
+        <a id="btnCSSticky" class="btn secondary" role="button">联系客服</a>
+      </div>
+    </div>
+  </div>
 
   <script defer>
     // ========= 工具 =========
@@ -275,9 +325,12 @@
     const APP_URL='https://www.nodeshort.com/h5/#/?code=9HKKIP';
     const TG_WEB='https://t.me/NodeShortVN';
     const TG_DEEP='tg://resolve?domain=NodeShortVN';
+    const CS_WEB='https://t.me/NodeShort001';
+    const CS_DEEP='tg://resolve?domain=NodeShort001';
     const EMAIL_BIND_URL='https://www.nodeshort.com/h5/#/profile/bind-email?code=9HKKIP';
     const CAMPAIGN='web_event_2025_10';
     const YESTERDAY_COUNT=8532; // 可接后端
+    const TODAY_COUNT=12489; // 顶部 Banner 展示用，可接后端
 
     // 昨日人数
     document.getElementById('yesterdayCount').textContent=YESTERDAY_COUNT.toLocaleString('zh-CN');
@@ -299,10 +352,57 @@
       } else { track('Banner_View',{fallback:true}); }
     })();
 
+    // 顶部动态 Banner 轮播（4s）
+    (function(){
+      const el=document.getElementById('tickerText');
+      if(!el) return;
+      const msgs=[
+        `已领取用户：${TODAY_COUNT.toLocaleString('zh-CN')} 人 · 剩余名额有限`,
+        '🚀 自动发放 · 无需人工客服',
+        '🔒 风控保护 · 公平发放'
+      ];
+      let i=0; const prefersReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const rotate=()=>{
+        i=(i+1)%msgs.length;
+        el.classList.add('hide');
+        setTimeout(()=>{ el.textContent=msgs[i]; el.classList.remove('hide'); track('TopTicker_Rotate',{index:i}); }, 200);
+      };
+      track('TopTicker_View',{});
+      if(!prefersReduce){ setInterval(rotate,4000); }
+    })();
+
+    // 手机UI轮播
+    (function(){
+      const carousel=document.getElementById('uiCarousel');
+      if(!carousel) return;
+      const slides=carousel.querySelector('.slides');
+      const dots=[...carousel.querySelectorAll('.dot')];
+      let idx=0; let timer=null;
+      const go=(i)=>{
+        const total=slides.children.length;
+        idx=((i%total)+total)%total;
+        slides.style.transform = `translateX(-${idx*100}%)`;
+        dots.forEach((d,k)=>d.classList.toggle('active',k===idx));
+      };
+      const autoplay=()=>{
+        if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        clearInterval(timer); timer=setInterval(()=>go(idx+1),3500);
+      };
+      dots.forEach((d,k)=>{
+        d.addEventListener('click',()=>{go(k);autoplay();});
+        d.addEventListener('keydown',(e)=>{if(e.key==='Enter'||e.key===' '){go(k);autoplay();}});
+      });
+      // 滑动手势（移动端）
+      let startX=null;
+      carousel.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;},{passive:true});
+      carousel.addEventListener('touchmove',e=>{if(startX===null)return; const dx=e.touches[0].clientX-startX; if(Math.abs(dx)>40){ go(idx+(dx<0?1:-1)); startX=null; autoplay(); }},{passive:true});
+      autoplay();
+    })();
+
     // ========= 行为 =========
     const withUTM=(url,content)=>addUtm(url,'landing','button',CAMPAIGN,content);
 
-    const goRegister=(pos)=>{ track('CTA_Register',{pos}); openNew(withUTM(APP_URL,'register_'+pos)); };
+    
     const goBindEmail=(pos)=>{ track('CTA_BindEmail',{pos}); openNew(withUTM(EMAIL_BIND_URL,'bind_'+pos)); };
 
     // 深链唤醒 TG（失败回落）
@@ -313,6 +413,15 @@
       try{ window.location.href = TG_DEEP; }catch(e){}
       try{ localStorage.setItem(STORAGE_JOINED,'1'); }catch(e){}
       setTimeout(()=>{ track('CTA_JoinTG_Result',{pos,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
+    };
+
+    // 联系客服（深链优先，回落 H5）
+    const goCS=(pos)=>{
+      track('CS_Click',{pos});
+      const t0=Date.now();
+      setTimeout(()=>{ openNew(withUTM(CS_WEB,'cs_web_'+pos)); },800);
+      try{ window.location.href = CS_DEEP; }catch(e){}
+      setTimeout(()=>{ track('CS_Result',{pos,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
     };
 
     // 奖励门禁：未进群强提醒
@@ -329,15 +438,15 @@
 
     // 绑定
     const bind=(id,fn)=>document.getElementById(id)?.addEventListener('click',fn);
-    bind('btnRegisterTop', ()=>goRegister('top'));
-    bind('btnJoinTGTop', ()=>goJoinTG('top'));
-    bind('btnRegisterHero', ()=>goRegister('hero'));
-    bind('btnJoinTGHero', ()=>goJoinTG('hero'));
-    bind('btnRegisterFlow', ()=>goRegister('flow'));
-    bind('btnJoinTGFlow', ()=>goJoinTG('flow'));
+        bind('btnJoinTGTop', ()=>goJoinTG('top'));
+        bind('btnCSTop', ()=>goCS('top'));
+        bind('btnJoinTGHero', ()=>goJoinTG('hero'));
+        bind('btnJoinTGFlow', ()=>goJoinTG('flow'));
     bind('btnBindEmail', ()=>{ if(guardReward()) goBindEmail('flow'); });
-    bind('btnRegisterFooter', ()=>goRegister('footer'));
-    bind('btnJoinTGFooter', ()=>goJoinTG('footer'));
+        bind('btnJoinTGFooter', ()=>goJoinTG('footer'));
+        bind('btnCSFooter', ()=>goCS('footer'));
+        bind('btnJoinTGSticky', ()=>goJoinTG('sticky'));
+        bind('btnCSSticky', ()=>goCS('sticky'));
 
     // 流程曝光
     ['flow'].forEach(sec=>{
@@ -349,6 +458,20 @@
         }),{threshold:.5}); io.observe(el);
       } else { track('Flow_Step_View',{section:sec, fallback:true}); }
     });
+
+    // Sticky CTA 显示/隐藏（上滑显示、下滑隐藏）
+    (function(){
+      const bar=document.getElementById('stickyCta'); if(!bar) return;
+      let lastY=window.scrollY, ticking=false;
+      const onScroll=()=>{
+        const y=window.scrollY; const dir=y>lastY?'down':'up'; lastY=y;
+        if(dir==='up' || y<120){ bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        ticking=false;
+      };
+      window.addEventListener('scroll',()=>{ if(!ticking){ window.requestAnimationFrame(onScroll); ticking=true; } },{passive:true});
+      // 初始显示一次
+      setTimeout(()=>bar.classList.add('visible'),600);
+    }})();
   </script>
 </body>
 </html>
