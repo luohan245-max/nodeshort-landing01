@@ -6,23 +6,21 @@
   <meta name="theme-color" content="#0b0b0c" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.nodeshort.com/h5/#/?code=9HKKIP" />
-  <title>NodeShort｜注册→进群→绑定邮箱，即可自动发放奖励</title>
-  <meta name="description" content="活动路径：注册 → 加入官方 Telegram 群 → 绑定邮箱 → 由机器人自动发放奖励。面向越南用户，结算币种 VND。"/>
+  <title>NodeShort｜加入官方群，绑定邮箱，即可自动发放奖励</title>
+  <meta name="description" content="加入官方 Telegram 群 → 绑定邮箱 → 机器人自动发放奖励。面向越南用户，VND 结算。"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="NodeShort｜注册→进群→绑定邮箱，即可自动发放奖励" />
-  <meta property="og:description" content="看短剧赚奖励：注册、进群、绑定邮箱，机器人自动发放。越南活动，VND 结算。" />
+  <meta property="og:title" content="NodeShort｜加入官方群，绑定邮箱，即可自动发放奖励" />
+  <meta property="og:description" content="看短剧领奖励：加入 TG 群、绑定邮箱，机器人自动发放。" />
   <meta property="og:image" content="./assets/nodeshort-og-1200x630.png" />
   <meta property="og:url" content="https://www.nodeshort.com/h5/#/?code=9HKKIP" />
 
-  <!-- 预连接/解析加速 -->
   <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
   <link rel="dns-prefetch" href="//connect.facebook.net">
-  <link rel="dns-prefetch" href="//www.facebook.com">
-  <link rel="dns-prefetch" href="//t.me">
+  <link rel="dns-prefetch" href "//t.me">
 
-  <!-- Meta Pixel Code (ID: 4246326045691268) -->
+  <!-- Meta Pixel -->
   <script>
     (function(f,b,e,v,n,t,s){
       if(f.fbq) return; n=f.fbq=function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments) };
@@ -33,304 +31,131 @@
     fbq('init', '4246326045691268');
     fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=4246326045691268&ev=PageView&noscript=1" />
-  </noscript>
-  <!-- End Meta Pixel Code -->
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=4246326045691268&ev=PageView&noscript=1"/></noscript>
 
   <style>
-    :root{--bg:#0b0b0c;--card:#131316;--muted:#a6a8ad;--text:#f3f4f6;--gold:#efb21a;--accent:#e9a700;--brand:#ffd36b;--line:#212227;--shadow:0 10px 30px rgba(0,0,0,.35);--btn-fg:#1a1a1a;--alert:#1f2a10;--alertbd:#2d3b17}
-    :root[data-theme="light"]{--bg:#fff;--card:#fff;--muted:#5b5f66;--text:#121316;--brand:#ffcc5d;--line:#e9eaee;--shadow:0 10px 30px rgba(0,0,0,.08);--btn-fg:#121316;--alert:#fffbe6;--alertbd:#ffe58f}
+    :root{--bg:#0b0b0c;--card:#131316;--muted:#a6a8ad;--text:#f3f4f6;--gold:#efb21a;--accent:#e9a700;--brand:#ffd36b;--line:#212227;--shadow:0 10px 30px rgba(0,0,0,.35)}
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"PingFang SC","Microsoft Yahei",sans-serif;line-height:1.55;overflow-x:hidden}
-    img{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none;cursor:pointer}
-    .muted{color:var(--muted)}
-    .container{width:min(1120px,100%);margin-inline:auto;padding:0 16px}
+    body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"PingFang SC","Microsoft Yahei",sans-serif;line-height:1.55}
+    a{text-decoration:none;color:inherit;cursor:pointer}
+    img{display:block;max-width:100%}
 
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
-    .brand img{height:82px;aspect-ratio:288/82;object-fit:contain}
-    .actions{display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
-    .btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:10px;padding:10px 14px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap;transition:.2s all}
-    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--accent));color:var(--btn-fg)}
-    .btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
-    .btn.ghost{background:transparent;color:var(--text);border:1px dashed var(--line)}
-    .theme-toggle{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);border-radius:10px;padding:8px 10px;color:var(--muted);cursor:pointer}
-    header.shrink .brand img{height:56px}
-    @media(max-width:740px){.brand img{height:70px}.actions{flex-wrap:wrap;justify-content:center}.btn{padding:8px 12px;font-size:13px}.theme-toggle{padding:6px 8px;font-size:13px}}
+    header{position:sticky;top:0;background:rgba(11,11,12,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
+    .brand img{height:80px}
 
-    /* Alert bar */
-    .alert{background:var(--alert);border-bottom:1px solid var(--alertbd);color:#d8f0a3}
-    .alert .container{display:flex;gap:10px;align-items:center;justify-content:center;padding:8px 12px;font-weight:700}
-    .alert b{color:#f7ffbf}
+    .btn{display:inline-flex;align-items:center;gap:6px;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap}
+    .btn.secondary{border:1px solid var(--line)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--accent));color:#111}
 
-    /* Hero */
-    .hero{padding:36px 0 24px;background:radial-gradient(60% 70% at 70% 0%, color-mix(in oklch, var(--brand) 28%, transparent), transparent 65%)}
-    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}
-    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
-    .tag{display:inline-flex;align-items:center;gap:8px;color:#111;background:var(--brand);padding:6px 10px;border-radius:999px;font-weight:800;font-size:.9rem}
-    .hero h1{margin:12px 0 10px;font-size:clamp(26px,4.2vw,42px)}
-    .lead{color:var(--muted);font-size:clamp(14px,1.8vw,17px)}
+    .alert{background:#1f2a10;border-bottom:1px solid #2d3b17;color:#d8f0a3;padding:8px 0;text-align:center;font-weight:700}
 
-    .cta-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px}
-    @media (max-width:520px){.cta-row{grid-template-columns:1fr}}
-
-    .stats{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
-    .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-width:160px;box-shadow:var(--shadow)}
-    .stat b{font-size:20px;color:var(--gold)}
-    .social-proof{display:flex;gap:8px;align-items:center;margin-top:8px}
-    .proof-pill{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:13px}
+    .hero{padding:36px 0 24px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+    .kv{border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative}
+    .badge-auto{position:absolute;right:10px;top:10px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:8px;font-size:13px}
 
     .section{padding:24px 0}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+    @media(max-width:900px){.grid-3{grid-template-columns:1fr}}
 
-    .kv{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
-    .kv img{width:100%;height:100%;object-fit:cover}
-    .badge-auto{position:absolute;right:12px;top:12px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-weight:800}
-
-    .list{display:grid;gap:10px;margin:0;padding:0}
-    .list li{list-style:none;display:flex;gap:10px;align-items:flex-start}
-    .idx{background:color-mix(in oklch, var(--line) 60%, var(--bg));border-radius:8px;min-width:28px;text-align:center;color:var(--muted)}
-
-    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted)}
-    .footer-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
-    .footer-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:260px;box-shadow:var(--shadow);cursor:pointer;transition:.2s transform}
-    .footer-card:hover{transform:translateY(-2px)}
+    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);text-align:center}
+    .footer-card{border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:260px;display:inline-block;margin-top:14px}
   </style>
 </head>
 <body>
-  <!-- 限量提示条 -->
-  <div class="alert" id="limitBanner" role="note" aria-live="polite">
-    <div class="container">🎁 <b>每天仅限 300 名新用户领取奖励</b> —— 先到先得</div>
-  </div>
+  <div class="alert">🎁 每天仅限 300 名新用户领取奖励 —— 先到先得</div>
 
   <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="./assets/nodeshort-logo.png" alt="NodeShort Logo" loading="lazy" decoding="async">
-      </div>
-      <div class="actions">
-        <button id="themeToggle" class="theme-toggle" aria-label="切换主题"><span>🌙</span><span>主题</span></button>
-        <a id="btnRegisterTop" class="btn primary" target="_blank" rel="noopener">立即注册</a>
-        <a id="btnJoinTGTop" class="btn secondary" role="button" aria-label="加入 Telegram 群领取奖励"><span>✈️</span><span>进群领取奖励</span></a>
+    <div class="nav">
+      <div class="brand"><img src="./assets/nodeshort-logo.png" alt="NodeShort"></div>
+      <div style="display:flex;gap:10px">
+        <a id="btnJoinTGTop" class="btn primary">加入官方群领取</a>
+        <a id="btnCS" class="btn secondary">联系客服</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- 首屏视觉：左KV女孩追剧金币飞出；右TG群截图+机器人发奖 -->
     <section class="hero">
       <div class="container hero-grid">
-        <div class="kv" aria-label="看短剧，金币飞出，边看边赚">
-          <img src="./assets/kv-girl-coins-960.png" alt="女孩追剧，金币飞出" loading="lazy" decoding="async">
+        <div class="kv">
+          <img src="./assets/kv-girl-coins-960.png" alt="看短剧赚奖励">
         </div>
-        <div class="kv" aria-label="Telegram 官方群，机器人自动发放奖励">
-          <img src="./assets/tg-group-screenshot.png" alt="Telegram 官方群截图" loading="lazy" decoding="async">
+        <div class="kv">
+          <img src="./assets/tg-group-screenshot.png" alt="Telegram 官方群">
           <div class="badge-auto">🤖 奖励由机器人自动发放</div>
         </div>
       </div>
 
       <div class="container" style="margin-top:16px">
-        <span class="tag">最新活动</span>
-        <h1>看短剧还能赚钱？<b>是真的！</b></h1>
-        <p class="lead">越南用户正在用 NodeShort 一边追剧，一边领取<b>话费奖励</b>。想拿奖励？只需<b>注册 → 加群 → 绑定邮箱</b>，机器人即可自动发放。</p>
+        <h1>看短剧还能赚钱？是真的！</h1>
+        <p style="color:#a6a8ad">越南用户正在用 NodeShort 一边追剧，一边领取话费奖励。加入官方群、绑定邮箱，即可由机器人自动发放奖励。</p>
 
-        <div class="cta-row" style="margin-top:12px">
-          <a id="btnRegisterHero" class="btn primary" target="_blank" rel="noopener">立即注册</a>
-          <a id="btnJoinTGHero" class="btn secondary" role="button">加入 Telegram 领取奖励</a>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;margin-top:14px">
+          <a id="btnJoinTGHero" class="btn primary">加入 Telegram 领取奖励</a>
+          <a id="btnCS2" class="btn secondary">联系客服</a>
         </div>
 
-        <div class="stats">
-          <div class="stat"><b>1K Xu</b><div class="muted">= 1K VND</div></div>
-          <div class="stat"><b>10K+</b><div class="muted">兑换不设上限</div></div>
-          <div class="stat"><b>2025/10/21 – 2025/10/31</b><div class="muted">活动期间</div></div>
+        <div class="card" style="margin-top:16px">
+          <b>领取条件：</b> 加入官方群 → 绑定邮箱 → 机器人发放奖励  
+          <br>📌 未加入官方群 = 无法领取（机器人识别不到）
         </div>
 
-        <div class="social-proof">
-          <div class="proof-pill">📈 昨日领取人数：<b id="yesterdayCount">8,532</b> 人</div>
-          <div class="proof-pill">✅ 反作弊监控，公平发奖</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 三步强制流程 -->
-    <section class="section" id="flow">
-      <div class="container">
-        <h2>如何领取奖励？</h2>
-        <div class="grid-3">
-          <div class="card" style="padding:16px">
-            <h3>1️⃣ 注册账号</h3>
-            <p class="muted">创建 NodeShort 账号，开始看剧累计 Xu/DP。</p>
-            <a id="btnRegisterFlow" class="btn ghost" target="_blank" rel="noopener">去注册</a>
-          </div>
-          <div class="card" style="padding:16px">
-            <h3>2️⃣ 加入官方群</h3>
-            <p class="muted">必须进群，机器人才能识别并自动发放奖励。</p>
-            <a id="btnJoinTGFlow" class="btn ghost">进群领取</a>
-          </div>
-          <div class="card" style="padding:16px">
-            <h3>3️⃣ 绑定邮箱</h3>
-            <p class="muted">绑定后更安全，发奖不丢失。</p>
-            <a id="btnBindEmail" class="btn ghost" target="_blank" rel="noopener">去绑定邮箱</a>
-          </div>
-        </div>
-
-        <div class="card" style="padding:14px;margin-top:14px;display:flex;gap:12px;align-items:flex-start">
-          <div>📌</div>
-          <div><b>注意：</b>未加入官方群<b>无法</b>领取奖励，因为奖励由<b>机器人</b>自动发放。</div>
+        <div class="card" style="margin-top:16px">
+          <b>兑换说明（越南 VND）</b><br>
+          ✅ 1K Xu = 1K VND<br>
+          ✅ 单日兑换不设上限<br>
+          ✅ 活动时间：2025/10/21 – 2025/10/31
         </div>
       </div>
     </section>
 
-    <!-- 活动规则 -->
-    <section class="section" id="rules">
+    <section class="section">
       <div class="container">
-        <h2>活动规则</h2>
-        <ul class="list">
-          <li><span class="idx">1</span><span>对象：所有 NodeShort 成员（面向越南用户）。</span></li>
-          <li><span class="idx">2</span><span>时间：2025/10/21 – 2025/10/31。</span></li>
-          <li><span class="idx">3</span><span>条件：当日完成<b>注册 → 加群 → 绑定邮箱</b>流程。</span></li>
-          <li><span class="idx">4</span><span>每个账号每日仅可参与 1 次。</span></li>
-          <li><span class="idx">5</span><span>系统监控异常行为（虚拟手机号、批量注册、自动化工具、设备信息异常等）。</span></li>
-          <li><span class="idx">6</span><span>如发现作弊/套利：立即取消领奖资格。</span></li>
-          <li><span class="idx">7</span><span>平台保留最终解释权，并在必要时进行封禁处理。</span></li>
-        </ul>
+        <h2>为什么必须进群？</h2>
+        <div class="card">
+          ✅ 奖励由「机器人自动发放」  
+          ✅ 未入群的账号，机器人无法识别  
+          ✅ 防止作弊、批量套现，保证奖励真实落地
+        </div>
+
+        <div class="grid-3" style="margin-top:16px">
+          <div class="card">📌 每人每天仅可领取 1 次</div>
+          <div class="card">📌 系统检测虚拟号、批量注册将取消资格</div>
+          <div class="card">📌 平台保留封禁与追回奖励权利</div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container" style="text-align:center">
-      <a id="btnRegisterFooter" class="btn primary" target="_blank" rel="noopener">我已了解，去注册</a>
-      <div style="height:10px"></div>
-      <a id="btnJoinTGFooter" class="btn secondary">加入 Telegram 群领取</a>
-
-      <div class="footer-links" style="margin-top:20px">
-        <div class="footer-card"><h3>官方客服：@NodeShort001</h3></div>
-      </div>
-
-      <div class="brand" style="margin-top:20px;display:flex;justify-content:center">
-        <img src="./assets/nodeshort-logo.png" alt="NodeShort Logo" loading="lazy" decoding="async">
-      </div>
-      <div class="muted" style="text-align:center">© 2025 Node Short Studios Pte. Ltd. All rights reserved.</div>
-    </div>
+    <a id="btnJoinTGFooter" class="btn primary">加入官方群领取</a>
+    <div class="footer-card">官方客服：@NodeShort001</div>
+    <div style="margin-top:16px"><img src="./assets/nodeshort-logo.png" height="60"></div>
+    <div style="margin-top:6px">© 2025 Node Short Studios Pte. Ltd.</div>
   </footer>
 
-  <script defer>
-    // ========= 基础工具 =========
-    const root=document.documentElement;
-    const STORAGE_THEME='ns_theme';
-    const STORAGE_JOINED='joined_tg';
-    const hasFbq=()=>typeof window.fbq==='function';
-    const hasGtag=()=>typeof window.gtag==='function';
-    const track=(name,params={})=>{
-      try{ if(hasFbq()) fbq('trackCustom',name,params);}catch(e){}
-      try{ if(hasGtag()) gtag('event',name,params);}catch(e){}
-    };
-    const addUtm=(url,source,medium,campaign,content)=>{
-      try{const u=new URL(url);
-        u.searchParams.set('utm_source',source);
-        u.searchParams.set('utm_medium',medium);
-        u.searchParams.set('utm_campaign',campaign);
-        if(content) u.searchParams.set('utm_content',content);
-        return u.toString();
-      }catch{return url;}
-    };
-    const openNew=(url)=>window.open(url,'_blank','noopener');
+<script>
+  const TG_WEB='https://t.me/NodeShortVN';
+  const TG_DEEP='tg://resolve?domain=NodeShortVN';
+  const CS='https://t.me/NodeShort001';
 
-    // ========= 配置 =========
-    const APP_URL='https://www.nodeshort.com/h5/#/?code=9HKKIP';
-    const TG_WEB='https://t.me/NodeShortVN';
-    const TG_DEEP='tg://resolve?domain=NodeShortVN';
-    const EMAIL_BIND_URL='https://www.nodeshort.com/h5/#/profile/bind-email?code=9HKKIP';
-    const CAMPAIGN='web_event_2025_10';
-    const YESTERDAY_COUNT=8532; // 可改为后端下发
+  function joinTG(pos){
+    try{window.location.href=TG_DEEP}catch(e){}
+    setTimeout(()=>window.open(TG_WEB,'_blank'),600);
+  }
+  function goCS(){ window.open(CS,'_blank') }
 
-    // 昨日人数显示
-    document.getElementById('yesterdayCount').textContent=YESTERDAY_COUNT.toLocaleString('zh-CN');
-
-    // 主题
-    const setTheme=t=>{root.setAttribute('data-theme',t);try{localStorage.setItem(STORAGE_THEME,t)}catch(e){}};
-    setTheme((()=>{try{return localStorage.getItem(STORAGE_THEME)||'dark'}catch(e){return'dark'}})());
-    document.getElementById('themeToggle')?.addEventListener('click',()=>{
-      setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
-      track('Theme_Toggle',{theme:root.getAttribute('data-theme')});
-    });
-
-    // 顶部提示条曝光
-    (function(){const el=document.getElementById('limitBanner');
-      if('IntersectionObserver'in window && el){
-        const io=new IntersectionObserver(es=>es.forEach(e=>{
-          if(e.isIntersecting){track('Banner_View',{variant:'limit_300'});io.unobserve(el);}
-        }),{threshold:.6}); io.observe(el);
-      } else { track('Banner_View',{fallback:true}); }
-    })();
-
-    // ========= 行为绑定 =========
-    const withUTM=(url,content)=>addUtm(url,'landing','button',CAMPAIGN,content);
-
-    const goRegister=(pos)=>{
-      track('CTA_Register',{pos});
-      openNew(withUTM(APP_URL,'register_'+pos));
-    };
-
-    const goBindEmail=(pos)=>{
-      track('CTA_BindEmail',{pos});
-      openNew(withUTM(EMAIL_BIND_URL,'bind_'+pos));
-    };
-
-    // 深链唤醒 TG（失败回落）
-    const goJoinTG=(pos)=>{
-      track('CTA_JoinTG_Click',{pos});
-      const t0=Date.now();
-      setTimeout(()=>{ openNew(withUTM(TG_WEB,'tg_web_'+pos)); }, 800);
-      try{ window.location.href = TG_DEEP; }catch(e){}
-      try{ localStorage.setItem(STORAGE_JOINED,'1'); }catch(e){}
-      setTimeout(()=>{ track('CTA_JoinTG_Result',{pos,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
-    };
-
-    // 领奖关卡：未进群强提醒
-    const guardReward=()=>{
-      const joined = (()=>{
-        try{ return localStorage.getItem(STORAGE_JOINED)==='1'; }catch(e){ return false; }
-      })();
-      if(!joined){
-        track('Reward_Gate',{joined:false});
-        alert('请先加入 Telegram 官方群再领取奖励。进入群并绑定邮箱后，机器人将自动发放。');
-        return false;
-      }
-      track('Reward_Gate',{joined:true});
-      return true;
-    };
-
-    // 绑定按钮
-    const bind=(id,fn)=>document.getElementById(id)?.addEventListener('click',fn);
-    bind('btnRegisterTop', ()=>goRegister('top'));
-    bind('btnJoinTGTop', ()=>goJoinTG('top'));
-    bind('btnRegisterHero', ()=>goRegister('hero'));
-    bind('btnJoinTGHero', ()=>goJoinTG('hero'));
-    bind('btnRegisterFlow', ()=>goRegister('flow'));
-    bind('btnJoinTGFlow', ()=>goJoinTG('flow'));
-    bind('btnBindEmail', ()=>{ if(guardReward()) goBindEmail('flow'); });
-    bind('btnRegisterFooter', ()=>goRegister('footer'));
-    bind('btnJoinTGFooter', ()=>goJoinTG('footer'));
-
-    // 首屏流程曝光
-    ['flow'].forEach(sec=>{
-      const el=document.getElementById(sec);
-      if(!el) return;
-      if('IntersectionObserver' in window){
-        const io=new IntersectionObserver(es=>es.forEach(e=>{
-          if(e.isIntersecting){track('Flow_Step_View',{section:sec}); io.unobserve(el);}
-        }),{threshold:.5}); io.observe(el);
-      } else { track('Flow_Step_View',{section:sec, fallback:true}); }
-    });
-  </script>
+  document.getElementById('btnJoinTGTop').onclick=()=>joinTG('top');
+  document.getElementById('btnJoinTGHero').onclick=()=>joinTG('hero');
+  document.getElementById('btnJoinTGFooter').onclick=()=>joinTG('footer');
+  document.getElementById('btnCS').onclick=goCS;
+  document.getElementById('btnCS2').onclick=goCS;
+</script>
 </body>
 </html>
