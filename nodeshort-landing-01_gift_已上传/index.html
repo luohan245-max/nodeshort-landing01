@@ -62,7 +62,16 @@
     /* 强化 Join CTA 可见性 */
     .btn.cta-join{position:relative;background:linear-gradient(135deg,var(--brand),var(--accent));color:var(--btn-fg);padding:12px 18px;font-size:15px;box-shadow:0 8px 24px rgba(233,167,0,.35)}
     @keyframes glow{0%{box-shadow:0 0 0 rgba(233,167,0,0)}50%{box-shadow:0 0 24px rgba(233,167,0,.45)}100%{box-shadow:0 0 0 rgba(233,167,0,0)}}
+    /* 主按钮脉冲动效 */
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03);box-shadow:0 0 32px rgba(233,167,0,.45)}100%{transform:scale(1)}}
+    .btn.pulse{animation:pulse 1.8s ease-in-out infinite}
+    @media (prefers-reduced-motion: reduce){.btn.pulse{animation:none}}
     .btn.cta-join{animation:glow 2.8s infinite}
+    /* 拉满 + 渐变描边 CTA */
+    .btn.big-cta{width:100%;justify-content:center;padding:16px 20px;font-size:16px;border-radius:14px}
+    .btn.gradient-outline{position:relative;background:transparent;color:#ffe066}
+    .btn.gradient-outline::before{content:'';position:absolute;inset:0;border-radius:14px;padding:1.5px;background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+    .btn.gradient-outline:hover{transform:translateY(-1px)}
     .btn.cta-join:hover{transform:translateY(-1px)}
     .theme-toggle{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);border-radius:10px;padding:8px 10px;color:var(--muted);cursor:pointer}
     header.shrink .brand img{height:56px}
@@ -126,19 +135,24 @@
     .sticky-cta .title{font-weight:800;font-size:14px;color:#ffe066;display:flex;align-items:center;gap:6px}
     .sticky-cta .btn{min-height:44px}
 
-    /* Numeric highlight */
+    /* Toast */
+    #toast .msg{background:rgba(30,30,34,.98);color:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);font-weight:800}
+    #toast.show{display:block;animation:toast-in .2s ease}
+    @keyframes toast-in{from{opacity:0;transform:translate(-50%,-6px)}to{opacity:1;transform:translate(-50%,0)}}
+
+    /* Numeric highlight *//
     .num{color:#ffe066;text-shadow:0 0 6px rgba(255,224,102,.35)}
 
-    /* In-App 浏览器兜底弹窗 */
-    .inapp-mask{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100}
-    .inapp-mask.show{display:flex}
-    .inapp-dialog{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px;max-width:520px;margin:0 16px}
-    .inapp-dialog h3{margin:0 0 8px;font-size:18px;font-weight:900;color:#ffe066}
-    .inapp-dialog p{margin:8px 0;color:var(--muted)}
-    .inapp-actions{display:flex;gap:8px;margin-top:12px}
-    .copy-field{display:flex;gap:6px;align-items:center}
-    .copy-field input{flex:1;background:transparent;border:1px dashed var(--line);color:var(--text);padding:8px;border-radius:8px}
-    .copy-field button{white-space:nowrap}
+/* In-App 浏览器兜底弹窗 */
+.inapp-mask{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100}
+.inapp-mask.show{display:flex}
+.inapp-dialog{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px;max-width:520px;margin:0 16px}
+.inapp-dialog h3{margin:0 0 8px;font-size:18px;font-weight:900;color:#ffe066}
+.inapp-dialog p{margin:8px 0;color:var(--muted)}
+.inapp-actions{display:flex;gap:8px;margin-top:12px}
+.copy-field{display:flex;gap:6px;align-items:center}
+.copy-field input{flex:1;background:transparent;border:1px dashed var(--line);color:var(--text);padding:8px;border-radius:8px}
+.copy-field button{white-space:nowrap}
   </style>
 
   <!-- JSON-LD（中文） -->
@@ -167,6 +181,8 @@
   </script>
 </head>
 <body>
+  <!-- 轻提示 Toast -->
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true" style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:70;display:none"></div>
   <!-- 顶部动态 Banner（轻量） -->
   <div class="ticker" id="topTicker" role="status" aria-live="polite">
     <div class="container">
@@ -177,6 +193,7 @@
   <!-- 限量提示条 -->
   <div class="alert" id="limitBanner" role="note" aria-live="polite">
     <div class="container">🎁 <b>每天仅限 前<span class="num">300</span> 名用户可领取奖励</b> — 先到先得</div>
+  </div>
   </div>
 
   <header>
@@ -215,7 +232,7 @@
           <div class="proof-pill">✅ 反作弊监测，公平发放</div>
         </div>
 
-        <!-- 手机UI 轮播 -->
+        <!-- 手机UI 轮播（下移到此） -->
         <div class="carousel" id="uiCarousel" aria-label="应用界面预览轮播" style="margin-top:16px">
           <div class="slides">
             <img src="./assets/nodeshort-app-home-768.png" width="768" height="1365" loading="lazy" decoding="async" fetchpriority="high" alt="应用首页界面">
@@ -239,7 +256,6 @@
           <div class="card" style="padding:16px">
             <h3>1️⃣ ✈️ 进入 Telegram 群</h3>
             <p class="muted">必须进群，机器人才能完成验证并发放奖励。</p>
-            <button id="btnJoinTGFlow" class="btn primary cta-join" type="button">进群领取</button>
           </div>
           <div class="card" style="padding:16px">
             <h3>2️⃣ 🧑‍💻 注册账号</h3>
@@ -248,11 +264,14 @@
           <div class="card" style="padding:16px">
             <h3>3️⃣ ✉️ 绑定邮箱</h3>
             <p class="muted">绑定后更安全稳定，避免奖励丢失。</p>
-            <button id="btnBindEmail" class="btn ghost" type="button" target="_blank" rel="noopener">✉️ 绑定邮箱</button>
           </div>
         </div>
 
-        <div class="card" style="padding:14px;margin-top:14px;display:flex;gap:12px;align-items:flex-start">
+        <div style="text-align:center; max-width:560px; margin:18px auto 0;">
+      <button id="btnJoinTGFlowMain" class="btn gradient-outline big-cta pulse" type="button">进群领取</button>
+    </div>
+
+    <div class="card" style="padding:14px;margin-top:14px;display:flex;gap:12px;align-items:flex-start">
           <div>📌</div>
           <div><b>注意：</b>未进入群组将<b>无法</b>领取奖励，因为<b>机器人</b>自动发放。</div>
         </div>
@@ -282,10 +301,6 @@
       <div style="height:10px"></div>
       <button id="btnCSFooter" class="btn secondary" type="button" role="button">联系官方客服 @NodeShort001</button>
 
-      <div class="footer-links" style="margin-top:20px">
-        <div class="footer-card"><h3>官方客服：@NodeShort001</h3></div>
-      </div>
-
       <div class="brand" style="margin-top:20px;display:flex;justify-content:center">
         <img src="./assets/nodeshort-logo.png" width="288" height="82" fetchpriority="high" alt="NodeShort 标志" loading="lazy" decoding="async">
       </div>
@@ -293,23 +308,23 @@
     </div>
   </footer>
 
-  <!-- In-App 浏览器兜底弹窗 -->
-  <div class="inapp-mask" id="inappMask" role="dialog" aria-modal="true" aria-labelledby="inappTitle" aria-hidden="true">
-    <div class="inapp-dialog">
-      <h3 id="inappTitle">在当前浏览器无法直接打开 Telegram</h3>
-      <p>请复制下方链接并在系统浏览器中打开，或直接在 Telegram 搜索 <b>@NodeShortVN</b>。</p>
-      <div class="copy-field">
-        <input id="copyUrl" value="https://t.me/NodeShortVN" readonly>
-        <button id="btnCopy" class="btn secondary" type="button">复制链接</button>
-      </div>
-      <div class="inapp-actions">
-        <button id="btnOpenStore" class="btn ghost" type="button">打开系统浏览器</button>
-        <button id="btnInappClose" class="btn primary" type="button">我已了解</button>
-      </div>
+<!-- In-App 浏览器兜底弹窗 -->
+<div class="inapp-mask" id="inappMask" role="dialog" aria-modal="true" aria-labelledby="inappTitle" aria-hidden="true">
+  <div class="inapp-dialog">
+    <h3 id="inappTitle">在当前浏览器无法直接打开 Telegram</h3>
+    <p>请复制下方链接并在系统浏览器中打开，或直接在 Telegram 搜索 <b>@NodeShortVN</b>。</p>
+    <div class="copy-field">
+      <input id="copyUrl" value="https://t.me/NodeShortVN" readonly>
+      <button id="btnCopy" class="btn secondary" type="button">复制链接</button>
+    </div>
+    <div class="inapp-actions">
+      <button id="btnOpenStore" class="btn ghost" type="button">打开系统浏览器</button>
+      <button id="btnInappClose" class="btn primary" type="button">我已了解</button>
     </div>
   </div>
+</div>
 
-  <!-- Sticky Bottom CTA -->
+<!-- Sticky Bottom CTA -->
   <div class="sticky-cta" id="stickyCta" aria-live="polite">
     <div class="wrap container">
       <div class="title">🎁 进入 Telegram 领取奖励 · <span class="num">名额有限</span></div>
@@ -342,6 +357,7 @@
       }catch(_err){return url;}
     };
     const openNew=(url)=>window.open(url,'_blank','noopener');
+    const toast=(text)=>{const el=document.getElementById('toast');if(!el)return;el.innerHTML=`<div class=\"msg\">${text}</div>`;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('show');el.style.display='none'},2200);el.style.display='block'};
     const DEVICE=/Mobi|Android|iPhone/i.test(navigator.userAgent)?'mobile':'desktop';
     const isInApp=/MicroMessenger|FBAN|FBAV|Line|MiuiBrowser|VivoBrowser|OPPO|QQBrowser/i.test(navigator.userAgent);
 
@@ -364,6 +380,8 @@
     const CAMPAIGN='web_event_2025_10';
     const YESTERDAY_COUNT=8532; // 可接后端
     const TODAY_COUNT=12489; // 顶部 Banner 展示用，可接后端
+    
+    const QUOTA_LEFT = Number.isFinite(QUOTA_LEFT_OVERRIDE)? Math.max(0,Math.min(QUOTA_TOTAL,QUOTA_LEFT_OVERRIDE)) : Math.max(18, Math.floor(QUOTA_TOTAL*0.42 + Math.random()*18)); // 顶部 Banner 展示用，可接后端
 
     // 昨日人数
     (function(){
@@ -392,7 +410,7 @@
       }
     })();
 
-    // 顶部动态 Banner 轮播（4s）
+    // 顶部动态 Banner 轮播（循环切换 4s）
     (function(){
       const el=document.getElementById('tickerText');
       if(!el) return;
@@ -411,7 +429,7 @@
       if(!prefersReduce){ setInterval(rotate,4000); }
     })();
 
-    // 手机UI轮播（支持 URL 参数覆盖 img1/2/3）
+        // 手机UI轮播（支持 URL 参数动态更换图片：img1,img2,img3）
     (function(){
       const params=new URLSearchParams(location.search);
       const override=[params.get('img1'),params.get('img2'),params.get('img3')].filter(Boolean);
@@ -420,8 +438,8 @@
       if(!carousel) return;
       const slides=carousel.querySelector('.slides');
       const imgs=[...slides.querySelectorAll('img')];
+      // 动态替换图片源（若提供）
       if(override.length){ imgs.forEach((img,i)=>{ if(override[i]) img.src=override[i]; }); }
-
       const dots=[...carousel.querySelectorAll('.dot')];
       let idx=0; let timer=null;
       const go=(i)=>{
@@ -455,11 +473,12 @@
 
     // ========= 行为 =========
     const withUTM=(url,content)=>addUtm(url,'landing','button',CAMPAIGN,content);
-    const goBindEmail=(pos)=>{ track('CTA_BindEmail',{pos,device:DEVICE}); openNew(withUTM(EMAIL_BIND_URL,'bind_'+pos)); };
+    const goBindEmail=(pos)=>{ track('CTA_BindEmail',{pos}); openNew(withUTM(EMAIL_BIND_URL,'bind_'+pos)); };
 
     // 深链唤醒 TG（失败回落）
     const goJoinTG=(pos)=>{
       const ctx={pos, device: DEVICE};
+
       track('CTA_JoinTG_Click',ctx);
       if(isInApp){ showInApp(); track('CTA_JoinTG_InApp_Block',ctx); return; }
       const t0=Date.now();
@@ -473,6 +492,15 @@
     const goCS=(pos)=>{
       const ctx={pos, device: DEVICE};
       track('CS_Click',ctx);
+      toast('正在尝试打开 Telegram 客服…');
+      if(isInApp){ showInApp(); track('CS_InApp_Block',ctx); toast('当前浏览器受限，已提供替代操作'); return; }
+      const t0=Date.now();
+      let opened=false;
+      try{ window.location.href = CS_DEEP; opened=true; }catch(_e){}
+      setTimeout(()=>{ if(!opened){ openNew(withUTM(CS_WEB,'cs_web_'+pos)); } },800);
+      setTimeout(()=>{ track('CS_Result',{...ctx,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
+    };
+      track('CS_Click',ctx);
       if(isInApp){ showInApp(); track('CS_InApp_Block',ctx); return; }
       const t0=Date.now();
       setTimeout(()=>{ openNew(withUTM(CS_WEB,'cs_web_'+pos)); },800);
@@ -484,11 +512,11 @@
     const guardReward=()=>{
       const joined = (()=>{ try{ return localStorage.getItem(STORAGE_JOINED)==='1'; }catch(_e){ return false; } })();
       if(!joined){
-        track('Reward_Gate',{joined:false,device:DEVICE});
-        alert('请先进入 Telegram 群，再领取奖励。完成进群并绑定邮箱后，机器人会自动发放。');
+        track('Reward_Gate',{joined:false});
+        toast('请先进入群组再领取奖励');
         return false;
       }
-      track('Reward_Gate',{joined:true,device:DEVICE});
+      track('Reward_Gate',{joined:true});
       return true;
     };
 
@@ -497,8 +525,7 @@
     bind('btnJoinTGTop',   ()=>goJoinTG('top'));
     bind('btnCSTop',       ()=>goCS('top'));
     bind('btnJoinTGHero',  ()=>goJoinTG('hero'));
-    bind('btnJoinTGFlow',  ()=>goJoinTG('flow'));
-    bind('btnBindEmail',   ()=>{ if(guardReward()) goBindEmail('flow'); });
+    bind('btnJoinTGFlowMain', ()=>goJoinTG('flow_main'));
     bind('btnJoinTGFooter',()=>goJoinTG('footer'));
     bind('btnCSFooter',    ()=>goCS('footer'));
     bind('btnJoinTGSticky',()=>goJoinTG('sticky'));
@@ -530,6 +557,7 @@
         ticking=false;
       };
       window.addEventListener('scroll',()=>{ if(!ticking){ window.requestAnimationFrame(onScroll); ticking=true; } },{passive:true});
+      // 初始显示一次
       setTimeout(()=>bar.classList.add('visible'),600);
     })();
 
