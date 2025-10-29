@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="vi" data-theme="dark">
+<html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0b0b0c" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.nodeshort.com/h5/#/?code=9HKKIP" />
-  <title>NodeShort｜Mời bạn bè xem phim, nạp thoại miễn phí</title>
-  <meta name="description" content="Sự kiện Web: Đăng ký → Vào nhóm Telegram → Liên kết email → Nhận thưởng nạp thoại." />
+  <title>NodeShort｜注册→进群→绑定邮箱，即可自动发放奖励</title>
+  <meta name="description" content="活动路径：注册 → 加入官方 Telegram 群 → 绑定邮箱 → 由机器人自动发放奖励。面向越南用户，结算币种 VND。"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="NodeShort｜Mời bạn bè xem phim, nạp thoại miễn phí" />
-  <meta property="og:description" content="Xem phim kiếm Xu/DP. Vào nhóm Telegram & liên kết email để nhận thưởng tự động." />
+  <meta property="og:title" content="NodeShort｜注册→进群→绑定邮箱，即可自动发放奖励" />
+  <meta property="og:description" content="看短剧赚奖励：注册、进群、绑定邮箱，机器人自动发放。越南活动，VND 结算。" />
   <meta property="og:image" content="./assets/nodeshort-og-1200x630.png" />
   <meta property="og:url" content="https://www.nodeshort.com/h5/#/?code=9HKKIP" />
 
-  <!-- Hints -->
+  <!-- 预连接/解析加速 -->
   <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
   <link rel="dns-prefetch" href="//connect.facebook.net">
   <link rel="dns-prefetch" href="//www.facebook.com">
@@ -94,9 +94,6 @@
     .kv img{width:100%;height:100%;object-fit:cover}
     .badge-auto{position:absolute;right:12px;top:12px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-weight:800}
 
-    .token{display:flex;gap:14px;align-items:center}
-    .token img{width:42px;height:42px}
-
     .list{display:grid;gap:10px;margin:0;padding:0}
     .list li{list-style:none;display:flex;gap:10px;align-items:flex-start}
     .idx{background:color-mix(in oklch, var(--line) 60%, var(--bg));border-radius:8px;min-width:28px;text-align:center;color:var(--muted)}
@@ -110,7 +107,7 @@
 <body>
   <!-- 限量提示条 -->
   <div class="alert" id="limitBanner" role="note" aria-live="polite">
-    <div class="container">🎁 <b>Mỗi ngày chỉ có 300 suất thưởng cho người dùng mới</b> — đến trước nhận trước</div>
+    <div class="container">🎁 <b>每天仅限 300 名新用户领取奖励</b> —— 先到先得</div>
   </div>
 
   <header>
@@ -119,48 +116,45 @@
         <img src="./assets/nodeshort-logo.png" alt="NodeShort Logo" loading="lazy" decoding="async">
       </div>
       <div class="actions">
-        <button id="themeToggle" class="theme-toggle" aria-label="Chuyển chủ đề"><span>🌙</span><span>Chủ đề</span></button>
-        <a id="btnRegisterTop" class="btn primary" target="_blank" rel="noopener">Đăng ký ngay</a>
-        <a id="btnJoinTGTop" class="btn secondary" role="button" aria-label="Tham gia nhóm Telegram"><span>✈️</span><span>Vào nhóm nhận thưởng</span></a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换主题"><span>🌙</span><span>主题</span></button>
+        <a id="btnRegisterTop" class="btn primary" target="_blank" rel="noopener">立即注册</a>
+        <a id="btnJoinTGTop" class="btn secondary" role="button" aria-label="加入 Telegram 群领取奖励"><span>✈️</span><span>进群领取奖励</span></a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- 首屏视觉：左KV女孩追剧金币飞出；右TG群截图+机器人发奖 -->
     <section class="hero">
       <div class="container hero-grid">
-        <!-- 左：女孩追剧金币飞出（替换为你的KV图） -->
-        <div class="kv" aria-label="Xem phim - Xu bay ra, nhận thưởng">
-          <img src="./assets/kv-girl-coins-960.png" alt="Cô gái xem phim, Xu bay ra" loading="lazy" decoding="async">
+        <div class="kv" aria-label="看短剧，金币飞出，边看边赚">
+          <img src="./assets/kv-girl-coins-960.png" alt="女孩追剧，金币飞出" loading="lazy" decoding="async">
         </div>
-
-        <!-- 右：TG群截图 + 机器人自动发放奖励 -->
-        <div class="kv" aria-label="Telegram nhóm - Bot phát thưởng tự động">
-          <img src="./assets/tg-group-screenshot.png" alt="Nhóm Telegram chính thức" loading="lazy" decoding="async">
-          <div class="badge-auto">🤖 Phát thưởng tự động bởi bot</div>
+        <div class="kv" aria-label="Telegram 官方群，机器人自动发放奖励">
+          <img src="./assets/tg-group-screenshot.png" alt="Telegram 官方群截图" loading="lazy" decoding="async">
+          <div class="badge-auto">🤖 奖励由机器人自动发放</div>
         </div>
       </div>
 
       <div class="container" style="margin-top:16px">
-        <span class="tag">Sự kiện mới</span>
-        <h1>Nhìn phim mà còn kiếm tiền? <b>Có thật!</b></h1>
-        <p class="lead">Người dùng Việt đang dùng NodeShort vừa cày phim vừa nhận <b>thẻ nạp thoại</b>. Muốn nhận thưởng? Hãy <b>Đăng ký → Vào nhóm TG → Liên kết email</b> là bot phát thưởng ngay.</p>
+        <span class="tag">最新活动</span>
+        <h1>看短剧还能赚钱？<b>是真的！</b></h1>
+        <p class="lead">越南用户正在用 NodeShort 一边追剧，一边领取<b>话费奖励</b>。想拿奖励？只需<b>注册 → 加群 → 绑定邮箱</b>，机器人即可自动发放。</p>
 
         <div class="cta-row" style="margin-top:12px">
-          <a id="btnRegisterHero" class="btn primary" target="_blank" rel="noopener">Đăng ký ngay</a>
-          <a id="btnJoinTGHero" class="btn secondary" role="button">Vào Telegram để nhận thưởng</a>
+          <a id="btnRegisterHero" class="btn primary" target="_blank" rel="noopener">立即注册</a>
+          <a id="btnJoinTGHero" class="btn secondary" role="button">加入 Telegram 领取奖励</a>
         </div>
 
         <div class="stats">
           <div class="stat"><b>1K Xu</b><div class="muted">= 1K VND</div></div>
-          <div class="stat"><b>10K+</b><div class="muted">Không giới hạn trần</div></div>
-          <div class="stat"><b>21/10 – 31/10/2025</b><div class="muted">Trong thời gian sự kiện</div></div>
+          <div class="stat"><b>10K+</b><div class="muted">兑换不设上限</div></div>
+          <div class="stat"><b>2025/10/21 – 2025/10/31</b><div class="muted">活动期间</div></div>
         </div>
 
         <div class="social-proof">
-          <div class="proof-pill">📈 Hôm qua đã nhận: <b id="yesterdayCount">8,532</b> người</div>
-          <div class="proof-pill">✅ Kiểm duyệt gian lận, trả thưởng công bằng</div>
+          <div class="proof-pill">📈 昨日领取人数：<b id="yesterdayCount">8,532</b> 人</div>
+          <div class="proof-pill">✅ 反作弊监控，公平发奖</div>
         </div>
       </div>
     </section>
@@ -168,44 +162,44 @@
     <!-- 三步强制流程 -->
     <section class="section" id="flow">
       <div class="container">
-        <h2>Nhận thưởng như thế nào?</h2>
+        <h2>如何领取奖励？</h2>
         <div class="grid-3">
           <div class="card" style="padding:16px">
-            <h3>1️⃣ Đăng ký tài khoản</h3>
-            <p class="muted">Tạo tài khoản NodeShort để bắt đầu tích Xu/DP khi xem phim.</p>
-            <a id="btnRegisterFlow" class="btn ghost" target="_blank" rel="noopener">Đăng ký ngay</a>
+            <h3>1️⃣ 注册账号</h3>
+            <p class="muted">创建 NodeShort 账号，开始看剧累计 Xu/DP。</p>
+            <a id="btnRegisterFlow" class="btn ghost" target="_blank" rel="noopener">去注册</a>
           </div>
           <div class="card" style="padding:16px">
-            <h3>2️⃣ Vào nhóm Telegram</h3>
-            <p class="muted">Bắt buộc vào nhóm để bot có thể xác nhận & phát thưởng.</p>
-            <a id="btnJoinTGFlow" class="btn ghost">Vào nhóm nhận thưởng</a>
+            <h3>2️⃣ 加入官方群</h3>
+            <p class="muted">必须进群，机器人才能识别并自动发放奖励。</p>
+            <a id="btnJoinTGFlow" class="btn ghost">进群领取</a>
           </div>
           <div class="card" style="padding:16px">
-            <h3>3️⃣ Liên kết email</h3>
-            <p class="muted">Liên kết để nhận thưởng an toàn & không thất lạc.</p>
-            <a id="btnBindEmail" class="btn ghost" target="_blank" rel="noopener">Liên kết email</a>
+            <h3>3️⃣ 绑定邮箱</h3>
+            <p class="muted">绑定后更安全，发奖不丢失。</p>
+            <a id="btnBindEmail" class="btn ghost" target="_blank" rel="noopener">去绑定邮箱</a>
           </div>
         </div>
 
         <div class="card" style="padding:14px;margin-top:14px;display:flex;gap:12px;align-items:flex-start">
           <div>📌</div>
-          <div><b>Chú ý:</b> Không vào nhóm thì <b>không thể</b> nhận thưởng, vì <b>bot</b> xử lý tự động.</div>
+          <div><b>注意：</b>未加入官方群<b>无法</b>领取奖励，因为奖励由<b>机器人</b>自动发放。</div>
         </div>
       </div>
     </section>
 
-    <!-- 奖励与规则（保留） -->
+    <!-- 活动规则 -->
     <section class="section" id="rules">
       <div class="container">
-        <h2>Quy tắc sự kiện</h2>
+        <h2>活动规则</h2>
         <ul class="list">
-          <li><span class="idx">1</span><span>Đối tượng: Tất cả thành viên NodeShort.</span></li>
-          <li><span class="idx">2</span><span>Thời gian: 21/10/2025 – 31/10/2025.</span></li>
-          <li><span class="idx">3</span><span>Điều kiện: <b>Đăng ký → Vào nhóm TG → Liên kết email</b> trong ngày.</span></li>
-          <li><span class="idx">4</span><span>Mỗi tài khoản chỉ tham gia 1 lần/ngày.</span></li>
-          <li><span class="idx">5</span><span>Giám sát hành vi bất thường (SĐT ảo, đăng ký hàng loạt, tool auto…).</span></li>
-          <li><span class="idx">6</span><span>Nếu phát hiện gian lận/trục lợi: Hủy tư cách nhận thưởng ngay.</span></li>
-          <li><span class="idx">7</span><span>Nền tảng giữ quyền giải thích cuối cùng & xử lý khóa tài khoản khi cần.</span></li>
+          <li><span class="idx">1</span><span>对象：所有 NodeShort 成员（面向越南用户）。</span></li>
+          <li><span class="idx">2</span><span>时间：2025/10/21 – 2025/10/31。</span></li>
+          <li><span class="idx">3</span><span>条件：当日完成<b>注册 → 加群 → 绑定邮箱</b>流程。</span></li>
+          <li><span class="idx">4</span><span>每个账号每日仅可参与 1 次。</span></li>
+          <li><span class="idx">5</span><span>系统监控异常行为（虚拟手机号、批量注册、自动化工具、设备信息异常等）。</span></li>
+          <li><span class="idx">6</span><span>如发现作弊/套利：立即取消领奖资格。</span></li>
+          <li><span class="idx">7</span><span>平台保留最终解释权，并在必要时进行封禁处理。</span></li>
         </ul>
       </div>
     </section>
@@ -213,12 +207,12 @@
 
   <footer>
     <div class="container" style="text-align:center">
-      <a id="btnRegisterFooter" class="btn primary" target="_blank" rel="noopener">Tôi đã hiểu, đi đăng ký</a>
+      <a id="btnRegisterFooter" class="btn primary" target="_blank" rel="noopener">我已了解，去注册</a>
       <div style="height:10px"></div>
-      <a id="btnJoinTGFooter" class="btn secondary">Vào nhóm Telegram để nhận</a>
+      <a id="btnJoinTGFooter" class="btn secondary">加入 Telegram 群领取</a>
 
       <div class="footer-links" style="margin-top:20px">
-        <div class="footer-card"><h3>Hỗ trợ chính thức: @NodeShort001</h3></div>
+        <div class="footer-card"><h3>官方客服：@NodeShort001</h3></div>
       </div>
 
       <div class="brand" style="margin-top:20px;display:flex;justify-content:center">
@@ -259,7 +253,7 @@
     const YESTERDAY_COUNT=8532; // 可改为后端下发
 
     // 昨日人数显示
-    document.getElementById('yesterdayCount').textContent=YESTERDAY_COUNT.toLocaleString('vi-VN');
+    document.getElementById('yesterdayCount').textContent=YESTERDAY_COUNT.toLocaleString('zh-CN');
 
     // 主题
     const setTheme=t=>{root.setAttribute('data-theme',t);try{localStorage.setItem(STORAGE_THEME,t)}catch(e){}};
@@ -295,25 +289,20 @@
     const goJoinTG=(pos)=>{
       track('CTA_JoinTG_Click',{pos});
       const t0=Date.now();
-      let fallbackTimer=setTimeout(()=>{ openNew(withUTM(TG_WEB,'tg_web_'+pos)); }, 800);
-      // 尝试深链（移动端优先）
+      setTimeout(()=>{ openNew(withUTM(TG_WEB,'tg_web_'+pos)); }, 800);
       try{ window.location.href = TG_DEEP; }catch(e){}
-      // 标记 joined
       try{ localStorage.setItem(STORAGE_JOINED,'1'); }catch(e){}
-      // 二次追踪
-      setTimeout(()=>{
-        track('CTA_JoinTG_Result',{pos,mode:'deep_try',elapsed:Date.now()-t0});
-      },1200);
+      setTimeout(()=>{ track('CTA_JoinTG_Result',{pos,mode:'deep_try',elapsed:Date.now()-t0}); },1200);
     };
 
-    // Gate：未进群则强提醒
+    // 领奖关卡：未进群强提醒
     const guardReward=()=>{
       const joined = (()=>{
         try{ return localStorage.getItem(STORAGE_JOINED)==='1'; }catch(e){ return false; }
       })();
       if(!joined){
         track('Reward_Gate',{joined:false});
-        alert('Bạn cần vào nhóm Telegram trước khi nhận thưởng. Bot sẽ phát tự động sau khi vào nhóm và liên kết email.');
+        alert('请先加入 Telegram 官方群再领取奖励。进入群并绑定邮箱后，机器人将自动发放。');
         return false;
       }
       track('Reward_Gate',{joined:true});
@@ -322,7 +311,6 @@
 
     // 绑定按钮
     const bind=(id,fn)=>document.getElementById(id)?.addEventListener('click',fn);
-
     bind('btnRegisterTop', ()=>goRegister('top'));
     bind('btnJoinTGTop', ()=>goJoinTG('top'));
     bind('btnRegisterHero', ()=>goRegister('hero'));
