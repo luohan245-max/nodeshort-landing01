@@ -297,8 +297,8 @@
         </div>
 
         <div style="text-align:center; max-width:560px; margin:18px auto 0; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-  <button id="btnCSFlowMain"$1$2>$3</button>
-  <button id="btnFBFlowMain"$1$2>$3</button>
+  <button id="btnCSFlowMain" class="btn gradient-outline animate big-cta anim-tg" type="button"><span class="icon icon-tg" aria-hidden="true">✈️</span><span>联系TG客服</span></button>
+  <button id="btnFBFlowMain" class="btn fb big-cta anim-fb" type="button"><span class="icon icon-fb" aria-hidden="true">📘</span><span>联系FB客服</span></button>
 </div>
 
         <div class="card" style="padding:14px;margin-top:14px;display:flex;gap:12px;align-items:flex-start">
@@ -515,6 +515,7 @@
     bind('btnCSTop',     ()=>goCS('top'));
     bind('btnCSHero',    ()=>goCS('hero'));
     bind('btnCSFlowMain',()=>goCS('flow_main'));
+    bind('btnFBFlowMain',()=>goFB('flow_main'));
     bind('btnCSFooter',  ()=>goCS('footer'));
     bind('btnCSSticky',  ()=>goCS('sticky'));
     // 群聊按钮（辅）
