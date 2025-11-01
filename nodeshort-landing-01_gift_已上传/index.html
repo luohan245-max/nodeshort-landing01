@@ -421,7 +421,7 @@
     setTheme((()=>{try{return localStorage.getItem(STORAGE_THEME)||'dark'}catch(_e){return'dark'}})());
     document.getElementById('themeToggle')?.addEventListener('click',()=>{
       setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
-      track('Theme_Toggle',{theme:root.getAttribute('data-theme')});
+      /* no tracking */
     });
 
     // 顶部提示条曝光
