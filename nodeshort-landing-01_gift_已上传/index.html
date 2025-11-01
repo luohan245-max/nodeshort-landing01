@@ -449,8 +449,7 @@
       ];
       let i=0; const prefersReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let hasReportedRotate=false; const rotate=()=>{ i=(i+1)%msgs.length; el.classList.add('hide'); setTimeout(()=>{ el.textContent=msgs[i]; el.classList.remove('hide'); if(!hasReportedRotate){ hasReportedRotate=true; track('TopTicker_Rotate',{index:i}); } }, 200); };
-      // 仅当用户滚动过首屏再计入曝光
-      if(window.scrollY>80){ track('TopTicker_View',{});
+      track('TopTicker_View',{});
       if(!prefersReduce){ setInterval(rotate,4000); }
     })();
 
