@@ -160,7 +160,9 @@
     .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);transition:transform .25s ease, opacity .25s ease;opacity:.98}
     .sticky-cta.visible{transform:translateY(0)}
     .sticky-cta .wrap{backdrop-filter:blur(10px);background:rgba(19,19,22,.88);border-top:1px solid var(--line);padding:10px calc(12px + env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-right));display:grid;grid-template-columns:1fr auto;gap:8px}
-    @media(min-width:741px){.sticky-cta .wrap{grid-template-columns:1fr auto;max-width:1120px;margin-inline:auto;padding-inline:16px}}
+    @media(min-width:741px){
+      .sticky-cta .wrap{grid-template-columns:1fr auto;max-width:1120px;margin-inline:auto;padding-inline:16px}
+    }
     .sticky-cta .title{font-weight:800;font-size:14px;color:#ffe066;display:flex;align-items:center;gap:6px}
     .sticky-cta .btn{min-height:44px}
 
@@ -344,9 +346,9 @@
   <div class="inapp-mask" id="inappMask" role="dialog" aria-modal="true" aria-labelledby="inappTitle" aria-hidden="true">
     <div class="inapp-dialog">
       <h3 id="inappTitle">当前浏览器可能限制打开 Telegram</h3>
-      <p>可复制下方链接，在系统浏览器中打开；或在 Telegram 搜索 <b>@Nodeshort_VN</b>（在线客服）。</p>
+      <p>可复制下方链接，在系统浏览器中打开；或在 Telegram 搜索 <b>@cuc6122</b>（在线客服）。</p>
       <div class="copy-field">
-        <input id="copyUrl" value="https://t.me/Nodeshort_VN" readonly>
+        <input id="copyUrl" value="https://t.me/cuc6122" readonly>
         <button id="btnCopy" class="btn fb" type="button">复制客服链接</button>
       </div>
       <div class="inapp-actions">
@@ -375,10 +377,7 @@
     const STORAGE_JOINED='joined_tg';
     const hasFbq=()=>typeof window.fbq==='function';
     const hasGtag=()=>typeof window.gtag==='function';
-    const track=(name,params={})=>{
-      try{ if(hasFbq()) fbq('trackCustom',name,params);}catch(e){}
-      try{ if(hasGtag()) gtag('event',name,params);}catch(e){}
-    };
+    const track=(name,params={})=>{};
     const addUtm=(url,source,medium,campaign,content)=>{
       try{const u=new URL(url);
         u.searchParams.set('utm_source',source);
@@ -400,14 +399,14 @@
     const bindInAppModal=()=>{
       $('#btnInappClose')?.addEventListener('click',hideInApp);
       $('#btnCopy')?.addEventListener('click',()=>{ try{ navigator.clipboard.writeText($('#copyUrl').value); track('InApp_Copy_Success',{device:DEVICE}); }catch(_e){ track('InApp_Copy_Fail',{device:DEVICE}); } });
-      $('#btnOpenStore')?.addEventListener('click',()=>{ openNew('https://t.me/Nodeshort_VN'); track('InApp_Open_SystemBrowser',{device:DEVICE}); });
+      $('#btnOpenStore')?.addEventListener('click',()=>{ openNew('https://t.me/cuc6122'); track('InApp_Open_SystemBrowser',{device:DEVICE}); });
     };
 
     // ========= 配置 =========
     const TG_WEB='https://t.me/Nodeshort_VN';
     const TG_DEEP='tg://resolve?domain=Nodeshort_VN';
-    const CS_WEB='https://t.me/Nodeshort_VN';
-    const CS_DEEP='tg://resolve?domain=Nodeshort_VN';
+    const CS_WEB='https://t.me/cuc6122';
+    const CS_DEEP='tg://resolve?domain=cuc6122';
     const FB_WEB='https://www.facebook.com/share/16bA5J7TiJ/?mibextid=wwXIfr'; // TODO: 替换为你的FB客服链接
     const EMAIL_BIND_URL='https://www.nodeshort.com/h5/#/profile/bind-email?code=9HKKIP';
     const CAMPAIGN='web_event_2025_10';
