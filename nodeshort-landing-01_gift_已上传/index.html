@@ -449,7 +449,8 @@
       ];
       let i=0; const prefersReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let hasReportedRotate=false; const rotate=()=>{ i=(i+1)%msgs.length; el.classList.add('hide'); setTimeout(()=>{ el.textContent=msgs[i]; el.classList.remove('hide'); if(!hasReportedRotate){ hasReportedRotate=true; track('TopTicker_Rotate',{index:i}); } }, 200); };
-      track('TopTicker_View',{});
+      // 仅当用户滚动过首屏再计入曝光
+      if(window.scrollY>80){ track('TopTicker_View',{});
       if(!prefersReduce){ setInterval(rotate,4000); }
     })();
 
@@ -526,16 +527,20 @@
     bind('btnFBFooter', ()=>goCS('footer'));
     bind('btnFBSticky', ()=>goCS('sticky'));
 
-    // 流程曝光
+    // 流程曝光（60% 可见 + 停留 1s）
     (function(){
       const section=document.getElementById('flow');
       if(!section) return;
       if('IntersectionObserver' in window){
+        let dwell=null; let fired=false;
         const io=new IntersectionObserver(entries=>{
           entries.forEach(entry=>{
-            if(entry.isIntersecting){ track('Flow_Step_View',{section:'flow'}); io.unobserve(section); }
+            if(fired) return;
+            if(entry.isIntersecting && entry.intersectionRatio>=0.6){
+              if(!dwell){ dwell=setTimeout(()=>{ track('Flow_Step_View',{section:'flow'}); fired=true; io.unobserve(section); },1000); }
+            } else { if(dwell){ clearTimeout(dwell); dwell=null; } }
           });
-        },{threshold:.5});
+        },{threshold:[0,0.6,1]});
         io.observe(section);
       } else {
         track('Flow_Step_View',{section:'flow', fallback:true});
